@@ -1,0 +1,4 @@
+%div{class:"flex justify-between items-center"}
+  - (DateTime.now.year.downto(DateTime.now.year - 500)).each do |year|
+    %div{class:"min-w-36 m-3"}
+      = year
