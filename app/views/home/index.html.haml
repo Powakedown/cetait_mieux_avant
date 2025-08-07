@@ -8,6 +8,6 @@
         ⋅
 
 %div{class:""}
-  - Asset.all.each do |asset|
+  - Asset.displayable.each do |asset|
     %div{class:"min-w-36 m-3"}
       = asset.name

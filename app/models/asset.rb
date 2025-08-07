@@ -14,9 +14,37 @@
 #
 class Asset < ApplicationRecord
   validates_presence_of :comment,
+    :color,
     :end_year,
     :name,
     :order,
     :start_year,
     :source
+    validates :color, inclusion: { in:
+      %w[slate
+        gray
+        zinc
+        neutral
+        stone
+        red
+        orange
+        amber
+        yellow
+        lime
+        green
+        emerald
+        teal
+        cyan
+        sky
+        blue
+        indigo
+        violet
+        purple
+        fuchsia
+        pink
+        rose
+        black]
+    }
+
+  scope :displayable, -> { where(public: true).order(:order) }
 end
