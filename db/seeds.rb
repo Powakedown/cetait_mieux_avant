@@ -12,11 +12,11 @@
 # - esclavage
 
 Asset.find_or_create_by!(
-  name: "Eau potable",
+  name: "Eau courante",
   comment: "Eau potable au robinet en France disponible couramment dans les foyers, environ 80% des foyers en 1950.",
   source: "https://fr.wikipedia.org/wiki/Eau_potable_en_France",
   start_year: "1950",
-  end_year: "2025",
+  end_year: Date.today.year.to_s,
   public: true,
   color: "blue",
   order: 1
@@ -27,7 +27,7 @@ Asset.find_or_create_by!(
   comment: "Électricité disponible dans la majorité de foyers français après la guerre, dans les années 1950.",
   source: "https://fr.wikipedia.org/wiki/%C3%89lectricit%C3%A9_en_France",
   start_year: "1950",
-  end_year: "2025",
+  end_year: Date.today.year.to_s,
   public: true,
   color: "yellow",
   order: 2
@@ -38,7 +38,7 @@ Asset.find_or_create_by!(
   comment: "Utilisation grand publique d'Internet en France, environ 50% des foyers en 2000.",
   source: "https://fr.wikipedia.org/wiki/Internet_en_France",
   start_year: "2000",
-  end_year: "2025",
+  end_year: Date.today.year.to_s,
   public: true,
   color: "orange",
   order: 3
@@ -49,7 +49,7 @@ Asset.find_or_create_by!(
   comment: "Découverte de la pénicilline par Alexander Fleming en 1928, mais utilisation généralisée dans les années 1940.",
   source: "https://fr.wikipedia.org/wiki/P%C3%A9nicilline",
   start_year: "1940",
-  end_year: "2025",
+  end_year: Date.today.year.to_s,
   public: true,
   color: "lime",
   order: 2
@@ -59,8 +59,8 @@ Asset.find_or_create_by!(
   name: "Lèpre",
   comment: "Présence de la lèpre en France, éradication de la maladie dans les années 1950.",
   source: "https://fr.wikipedia.org/wiki/L%C3%A8pre",
-  start_year: "1950",
-  end_year: "2025",
+  start_year: "0",
+  end_year: "1950",
   public: true,
   color: "amber",
   order: 2
@@ -71,7 +71,7 @@ Asset.find_or_create_by!(
   comment: "Possession de la voiture dans les foyers français, environ 50% des foyers en 1968.",
   source: "https://fr.wikipedia.org/wiki/Voiture",
   start_year: "1968",
-  end_year: "2025",
+  end_year: Date.today.year.to_s,
   public: true,
   color: "fuchsia",
   order: 3

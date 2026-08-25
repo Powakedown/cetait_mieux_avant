@@ -2,6 +2,7 @@
 Représentation graphique des avancées humaines.
 
 Things you may want to cover:
+* Ruby on rails project
 
 * Ruby version
 

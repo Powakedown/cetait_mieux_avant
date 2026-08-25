@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @assets = Asset.all
+    @assets = Asset.order(:order)
   end
 end
