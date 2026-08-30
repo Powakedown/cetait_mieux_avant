@@ -20,3 +20,8 @@
 4. the graphic can be close from left side, even in large screen
 5. reduce bar height, try padding top and bottom.
 
+# 3. Refactor view
+
+1. View index.html.haml is declaring a lot of variable to place and size the bars. Refactorize this part by creating a class that reserve the asset, handle the compute and is able to respond to .left_pos and .bar_with
+2. Add specs for it
+

@@ -16,7 +16,7 @@ Asset.find_or_create_by!(
   comment: "Eau potable au robinet en France disponible couramment dans les foyers, environ 80% des foyers en 1950.",
   source: "https://fr.wikipedia.org/wiki/Eau_potable_en_France",
   start_year: "1950",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#048A81",
   order: 1
@@ -27,7 +27,7 @@ Asset.find_or_create_by!(
   comment: "Électricité disponible dans la majorité de foyers français après la guerre, dans les années 1950.",
   source: "https://fr.wikipedia.org/wiki/%C3%89lectricit%C3%A9_en_France",
   start_year: "1950",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#06D6A0",
   order: 2
@@ -38,7 +38,7 @@ Asset.find_or_create_by!(
   comment: "Utilisation grand publique d'Internet en France, environ 50% des foyers en 2000.",
   source: "https://fr.wikipedia.org/wiki/Internet_en_France",
   start_year: "2000",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#54C6EB",
   order: 3
@@ -49,7 +49,7 @@ Asset.find_or_create_by!(
   comment: "Découverte de la pénicilline par Alexander Fleming en 1928, mais utilisation généralisée dans les années 1940.",
   source: "https://fr.wikipedia.org/wiki/P%C3%A9nicilline",
   start_year: "1940",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#8A89C0",
   order: 2
@@ -71,7 +71,7 @@ Asset.find_or_create_by!(
   comment: "Possession de la voiture dans les foyers français, environ 50% des foyers en 1968.",
   source: "https://fr.wikipedia.org/wiki/Voiture",
   start_year: "1968",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#048A81",
   order: 3
@@ -82,7 +82,7 @@ Asset.find_or_create_by!(
   comment: "En 1970, environ 50 % des maisons françaises étaient équipées de salles de bain",
   source: "https://fr.wikipedia.org/wiki/Salle_de_bain",
   start_year: "1970",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#06D6A0",
   order: 4
@@ -93,7 +93,7 @@ Asset.find_or_create_by!(
   comment: "La démocratie en France a été instaurée en 1789 avec la Révolution française.",
   source: "https://fr.wikipedia.org/wiki/D%C3%A9mocratie_en_France",
   start_year: "1789",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#54C6EB",
   order: 5
@@ -115,7 +115,7 @@ Asset.find_or_create_by!(
   comment: "Le droit de vote des femmes a été accordé en France en 1944.",
   source: "https://fr.wikipedia.org/wiki/Droit_de_vote_des_femmes_en_France",
   start_year: "1944",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#8A89C0",
   order: 7
@@ -137,7 +137,7 @@ Asset.find_or_create_by!(
   comment: "Création du système de protection sociale universel en France.",
   source: "https://fr.wikipedia.org/wiki/S%C3%A9curit%C3%A9_sociale_en_France",
   start_year: "1945",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#048A81",
   order: 2
@@ -149,7 +149,7 @@ Asset.find_or_create_by!(
   comment: "Création du Salaire Minimum Interprofessionnel de Croissance (SMIC) en France.",
   source: "https://fr.wikipedia.org/wiki/Salaire_minimum_interprofessionnel_de_croissance",
   start_year: "1950",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#06D6A0",
   order: 3
@@ -161,7 +161,7 @@ Asset.find_or_create_by!(
   comment: "Introduction des congés payés (2 semaines) en France.",
   source: "https://fr.wikipedia.org/wiki/Cong%C3%A9s_pay%C3%A9s",
   start_year: "1936",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#54C6EB",
   order: 4
@@ -173,7 +173,7 @@ Asset.find_or_create_by!(
   comment: "Généralisation de la vaccination contre la variole en France au début du XIXe siècle.",
   source: "https://fr.wikipedia.org/wiki/Histoire_de_la_vaccination",
   start_year: "1800",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#8A89C0",
   order: 5
@@ -185,7 +185,7 @@ Asset.find_or_create_by!(
   comment: "Lois Jules Ferry rendant l'école gratuite, laïque et obligatoire en France.",
   source: "https://fr.wikipedia.org/wiki/Lois_Jules_Ferry",
   start_year: "1882",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#048A81",
   order: 6
@@ -197,7 +197,7 @@ Asset.find_or_create_by!(
   comment: "Loi du 29 juillet 1881 sur la liberté de la presse en France.",
   source: "https://fr.wikipedia.org/wiki/Loi_du_29_juillet_1881_sur_la_libert%C3%A9_de_la_presse",
   start_year: "1881",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#06D6A0",
   order: 7
