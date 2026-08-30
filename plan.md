@@ -22,6 +22,6 @@
 
 # 3. Refactor view
 
-1. View index.html.haml is declaring a lot of variable to place and size the bars. Refactorize this part by creating a class that reserve the asset, handle the compute and is able to respond to .left_pos and .bar_with
+1. View index.html.haml is declaring a lot of variable to place and size the bars. Refactorize this part by creating a class that receive the assets, handle the compute and is able to respond to .left_pos and .bar_with
 2. Add specs for it
-
+3. View index.html.haml is declaring a log of variable at the top that manage the main graphic sizing and that are not used in the view.  Refactorize this part by creating a class that handle graphic styling, sizing etc..
