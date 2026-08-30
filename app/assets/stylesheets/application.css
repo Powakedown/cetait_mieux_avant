@@ -14,26 +14,245 @@
  *= require_self
  */
 
-/* Futuristic Theme Styles */
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  color: #e2e8f0;
   letter-spacing: 0.5px;
+  min-height: 100vh;
 }
 
 main {
   overflow-x: hidden;
 }
 
-/* Glowing effect for headings */
+/* Headings */
 h1, h2, h3, h4, h5, h6 {
   text-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
 }
 
-/* Scrollbar styling for modern look */
+h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #22d3ee 0%, #14b8a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* Timeline Page Styles */
+.timeline-page {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-page::before,
+.timeline-page::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.timeline-page::before {
+  width: 288px;
+  height: 288px;
+  background: #06b6d4;
+  top: 80px;
+  left: 40px;
+}
+
+.timeline-page::after {
+  width: 384px;
+  height: 384px;
+  background: #14b8a6;
+  bottom: 0;
+  right: 40px;
+}
+
+.timeline-header {
+  position: relative;
+  z-index: 10;
+  padding: 2rem;
+}
+
+.timeline-label {
+  font-size: 0.875rem;
+  font-family: 'Courier New', monospace;
+  color: #06b6d4;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-tagline {
+  font-size: 1.125rem;
+  color: #94a3b8;
+  font-weight: 300;
+  margin-top: 2rem;
+}
+
+.timeline-container {
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  margin: 2rem;
+}
+
+.timeline-container:hover {
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.2);
+}
+
+.timeline-scroll {
+  overflow-x: auto;
+}
+
+.timeline-header-row {
+  display: flex;
+  position: sticky;
+  top: 0;
+  background: linear-gradient(180deg, rgba(51, 65, 85, 0.5) 0%, rgba(30, 41, 59, 0.3) 100%);
+  z-index: 20;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid #334155;
+  backdrop-filter: blur(10px);
+}
+
+.timeline-era-label {
+  width: 192px;
+  flex-shrink: 0;
+  padding: 1rem;
+  border-right: 1px solid #334155;
+}
+
+.timeline-era-label-text {
+  font-size: 0.75rem;
+  font-family: 'Courier New', monospace;
+  color: #06b6d4;
+  letter-spacing: 0.05em;
+}
+
+.timeline-decade {
+  width: 128px;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 0.75rem;
+  font-family: 'Courier New', monospace;
+  color: #22d3ee;
+  padding: 1rem;
+  border-right: 1px solid rgba(51, 65, 85, 0.3);
+}
+
+.timeline-decade:last-child {
+  border-right: none;
+}
+
+.timeline-rows {
+  position: relative;
+}
+
+.timeline-row {
+  display: flex;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.3);
+  transition: background-color 0.2s ease;
+}
+
+.timeline-row:last-child {
+  border-bottom: none;
+}
+
+.timeline-row:hover {
+  background-color: rgba(51, 65, 85, 0.2);
+}
+
+.timeline-asset-name {
+  width: 192px;
+  flex-shrink: 0;
+  position: sticky;
+  left: 0;
+  background: linear-gradient(90deg, #1e293b 0%, #1e293b 80%, transparent 100%);
+  z-index: 10;
+  padding: 1rem;
+  border-right: 1px solid #334155;
+  display: flex;
+  align-items: center;
+}
+
+.timeline-asset-name-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.timeline-bars-container {
+  position: relative;
+  flex: 1;
+  min-height: 48px;
+}
+
+.timeline-bar {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 12px;
+  opacity: 0.85;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
+  overflow: visible;
+}
+
+.timeline-bar:hover {
+  opacity: 1;
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.timeline-bar-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: .5rem;
+  overflow: visible;
+}
+
+/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -50,19 +269,4 @@ h1, h2, h3, h4, h5, h6 {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #0891b2 0%, #0d9488 100%);
-}
-
-/* Stats container animation on hover */
-.timeline-container:hover {
-  box-shadow: 0 0 30px rgba(6, 182, 212, 0.2);
-}
-
-/* Timeline bar glow effect */
-.timeline-bar {
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
-}
-
-.timeline-bar:hover {
-  box-shadow: 0 0 30px rgba(6, 182, 212, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.1);
 }
