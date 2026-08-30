@@ -1,4 +1,4 @@
-# Main feature : graphic
+# 1. Main feature : graphic
 
 ## Implémentation de la feature principal : Frise chronologique des avancées humaines
 
@@ -11,3 +11,12 @@
 7. les barres possède une couleur de fond à trouver sur l'asset.color
 8. Les noms des avancées sont disposés sur l'ordonnée du graphique et ne bouge pas quand on scrolle vers la droite.
 9. Le tout doit être assez graphique et moderne.
+
+# 2. Update graphic
+
+1. Update asset colors with the theme (#048A81 #06D6A0 #54C6EB #8A89C0 #CDA2AB) (do not forget color inclusion validation in the model)
+2. the #CDA2AB is a brown : use it for asset about bad things like ("esclavage", "lèpre" ..)
+3. add asset's comment in the bars from the graphic the name, in a dark gray text, for each assets
+4. the graphic can be close from left side, even in large screen
+5. reduce bar height, try padding top and bottom.
+

@@ -4,7 +4,7 @@
 - max_decade = (max_year.to_f / 10).ceil * 10
 - decades_count = (max_decade / 10).floor + 1
 
-%div.container.mx-auto.p-6
+%div.w-full.p-6
   %h1.text-3xl.font-bold.mb-8 Frise chronologique des avancées humaines
 
   %div.overflow-x-auto
@@ -27,12 +27,14 @@
           - left_pos = [start_pos, end_pos].min
           - bar_width = (start_pos - end_pos).abs
 
-          %div.flex.h-14.mb-2
-            / Nom de l'asset (fixe à gauche)
+          %div.flex.p-3.mb-2
+            / Nom et commentaire de l'asset (fixe à gauche)
             %div.w-48.shrink-0.sticky.left-0.bg-white.z-10.flex.items-center.pr-4.font-medium.shadow-sm
-              = asset.name
+              %div
+                %div= asset.name
 
             / Frise chronologique
             %div.relative.h-full.flex-1{style: "min-width: #{decades_count * 120}px"}
               / Barre de l'asset
               %div.absolute.h-full.rounded-lg.opacity-80.hover:opacity-100.transition-opacity{style: "left: #{left_pos}px; width: #{bar_width}px; background-color: #{asset.color};"}
+                = asset.comment

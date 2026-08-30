@@ -21,29 +21,7 @@ class Asset < ApplicationRecord
     :start_year,
     :source
     validates :color, inclusion: { in:
-      %w[slate
-        gray
-        zinc
-        neutral
-        stone
-        red
-        orange
-        amber
-        yellow
-        lime
-        green
-        emerald
-        teal
-        cyan
-        sky
-        blue
-        indigo
-        violet
-        purple
-        fuchsia
-        pink
-        rose
-        black]
+      %w[#048A81 #06D6A0 #54C6EB #8A89C0 #CDA2AB]
     }
 
   scope :displayable, -> { where(public: true).order(:order) }
