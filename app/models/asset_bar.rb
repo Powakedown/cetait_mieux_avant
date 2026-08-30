@@ -4,7 +4,7 @@ class AssetBar
 
   def initialize(asset)
     @asset = asset
-    @max_decade = DateTime.now.year
+    @max_decade = TimelineGraphic::MAX_DECADE
   end
 
   def left_pos

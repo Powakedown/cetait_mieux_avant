@@ -1,10 +1,11 @@
 # Handles the graphic sizing and styling for the timeline
 class TimelineGraphic
   PIXELS_PER_DECADE = 120
+  MAX_DECADE = (DateTime.now.year / 10.0).ceil * 10
 
   def initialize(assets)
     @assets = assets
-    @max_decade = DateTime.now.year
+    @max_decade = MAX_DECADE
   end
 
   def max_decade

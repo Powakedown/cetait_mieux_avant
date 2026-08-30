@@ -30,7 +30,7 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#06D6A0",
-  order: 2
+  order: 4
 )
 puts "Électricité domestique asset created"
 Asset.find_or_create_by!(
@@ -41,7 +41,7 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#54C6EB",
-  order: 3
+  order: 18
 )
 puts "Internet asset created"
 Asset.find_or_create_by!(
@@ -63,7 +63,7 @@ Asset.find_or_create_by!(
   end_year: "1950",
   public: true,
   color: "#CDA2AB",
-  order: 2
+  order: 20
 )
 puts "Lèpre asset created"
 Asset.find_or_create_by!(
@@ -74,7 +74,7 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#048A81",
-  order: 3
+  order: 17
 )
 puts "Voiture asset created"
 Asset.find_or_create_by!(
@@ -85,7 +85,7 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#06D6A0",
-  order: 4
+  order: 12
 )
 puts "Salle de bain asset created"
 Asset.find_or_create_by!(
@@ -107,7 +107,7 @@ Asset.find_or_create_by!(
   end_year: "1904",
   public: true,
   color: "#CDA2AB",
-  order: 6
+  order: 9
 )
 puts "Travail des enfants asset created"
 Asset.find_or_create_by!(
@@ -129,7 +129,7 @@ Asset.find_or_create_by!(
   end_year: "1848",
   public: true,
   color: "#CDA2AB",
-  order: 8
+  order: 10
 )
 # Sécurité sociale (1945 : création en France)
 Asset.find_or_create_by!(
@@ -140,7 +140,7 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#048A81",
-  order: 2
+  order: 8
 )
 
 # SMIC (1950 : création du SMIG, ancêtre du SMIC)
@@ -152,7 +152,7 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#06D6A0",
-  order: 3
+  order: 16
 )
 
 # Congés payés (1936 : introduction en France)
@@ -164,7 +164,7 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#54C6EB",
-  order: 4
+  order: 15
 )
 
 # Vaccination (1800 : généralisation en France après la découverte de Jenner en 1798)
@@ -176,7 +176,7 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#8A89C0",
-  order: 5
+  order: 3
 )
 
 # L'école (1882 : lois Jules Ferry, école gratuite, laïque et obligatoire)
@@ -200,7 +200,7 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#06D6A0",
-  order: 7
+  order: 11
 )
 
 # Royauté (disparition en 1870 : fin de la monarchie en France avec la Troisième République)
@@ -212,7 +212,7 @@ Asset.find_or_create_by!(
   end_year: "1870",
   public: true,
   color: "#CDA2AB",
-  order: 8
+  order: 19
 )
 
 Asset.find_or_create_by!(
@@ -223,7 +223,7 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#CDA2AB",
-  order: 9
+  order: 13
 )
 
 Asset.find_or_create_by!(
@@ -234,5 +234,5 @@ Asset.find_or_create_by!(
   end_year: "1990",
   public: true,
   color: "#CDA2AB",
-  order: 10
+  order: 14
 )
