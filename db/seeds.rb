@@ -158,7 +158,7 @@ Asset.find_or_create_by!(
 # Congés payés (1936 : introduction en France)
 Asset.find_or_create_by!(
   name: "Congés payés",
-  comment: "Introduction des congés payés (2 semaines) en France.",
+  comment: "Introduction des congés payés",
   source: "https://fr.wikipedia.org/wiki/Cong%C3%A9s_pay%C3%A9s",
   start_year: "1936",
   end_year: nil,
@@ -236,3 +236,57 @@ Asset.find_or_create_by!(
   color: "#CDA2AB",
   order: 14
 )
+
+# Jeu vidéo (années 1980 : popularisation avec les consoles comme la NES et les micro-ordinateurs)
+Asset.find_or_create_by!(
+  name: "Jeu vidéo",
+  comment: "Popularisation des jeux vidéo en France avec l'arrivée des consoles et micro-ordinateurs grand public.",
+  source: "https://fr.wikipedia.org/wiki/Histoire_du_jeu_vid%C3%A9o_en_France",
+  start_year: "1980",
+  end_year: Date.today.year.to_s,
+  public: true,
+  color: "#048A81",
+  order: 9
+)
+
+# Réseaux sociaux (années 2000 : popularisation avec Facebook, Twitter, etc.)
+Asset.find_or_create_by!(
+  name: "Réseaux sociaux",
+  comment: "Généralisation des réseaux sociaux en France avec l'arrivée de plateformes comme Facebook, Twitter, et LinkedIn.",
+  source: "https://fr.wikipedia.org/wiki/R%C3%A9seau_social",
+  start_year: "2005",
+  end_year: Date.today.year.to_s,
+  public: true,
+  color: "#06D6A0",
+  order: 10
+)
+
+# Chauffage domestique (années 1950-1960 : généralisation du chauffage central)
+Asset.find_or_create_by!(
+  name: "Chauffage domestique",
+  comment: "Généralisation du chauffage central dans les foyers français, remplaçant les poêles et cheminées traditionnelles.",
+  source: "https://fr.wikipedia.org/wiki/Chauffage_central",
+  start_year: "1955",
+  end_year: Date.today.year.to_s,
+  public: true,
+  color: "#54C6EB",
+  order: 11
+)
+
+# Viande au quotidien (années 1960 : accès régulier à la viande pour la majorité de la population)
+Asset.find_or_create_by!(
+  name: "Viande",
+  comment: "Accès régulier à la viande dans l'alimentation quotidienne des Français, grâce à l'amélioration des conditions économiques et des systèmes de production.",
+  source: "https://fr.wikipedia.org/wiki/Consommation_de_viande_en_France",
+  start_year: "1960",
+  end_year: Date.today.year.to_s,
+  public: true,
+  color: "#8A89C0",
+  order: 12
+)
+
+#
+# Timeline :
+# cause première de mort
+# guerres
+# congé payés
