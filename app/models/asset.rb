@@ -15,7 +15,6 @@
 class Asset < ApplicationRecord
   validates_presence_of :comment,
     :color,
-    :end_year,
     :name,
     :order,
     :start_year,

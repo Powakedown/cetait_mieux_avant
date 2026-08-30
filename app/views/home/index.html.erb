@@ -3,11 +3,12 @@
 <div class="timeline-page">
   <div class="timeline-header">
     <div class="timeline-label">
-      → TIMELINE ANALYSIS v1.0
+      → ANALYSE CHRONOLOGIQUE
     </div>
-    <h1>HUMAN PROGRESS TIMELINE</h1>
+    <h1>AVANCÉES HUMAINES</h1>
     <p class="timeline-tagline">
-      A comprehensive statistical visualization of human advancement across centuries
+      Les progrès humains à travers les siècles. Les dates correspondent aux périodes où ces avancées sont adoptés par la majorité de la population, pas leur invention.
+      Les disparitions de phénomènes délétères ou nuisibles à la société sont également représentées. Elles peuvent ne pas être totales mais représentent une amélioration significative pour la société.
     </p>
   </div>
 
@@ -17,11 +18,11 @@
         <!-- En-tête avec les décennies -->
         <div class="timeline-header-row">
           <div class="timeline-era-label">
-            <div class="timeline-era-label-text">ERA</div>
+            <div class="timeline-era-label-text">Avancée \ Année</div>
           </div>
           <% graphic.decades_count.times do |i| %>
             <% decade = graphic.max_decade - (i * 10) %>
-            <div class="timeline-decade"><%= decade %> AD</div>
+            <div class="timeline-decade"><%= decade %></div>
           <% end %>
         </div>
 

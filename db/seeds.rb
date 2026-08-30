@@ -214,3 +214,25 @@ Asset.find_or_create_by!(
   color: "#CDA2AB",
   order: 8
 )
+
+Asset.find_or_create_by!(
+  name: "Culture du viol",
+  comment: "Présence et normalisation de la culture du viol dans la société.",
+  source: "https://fr.wikipedia.org/wiki/Culture_du_viol",
+  start_year: 0,
+  end_year: nil,
+  public: true,
+  color: "#CDA2AB",
+  order: 9
+)
+
+Asset.find_or_create_by!(
+  name: "Pédophilie",
+  comment: "La fin de l’impunité médiatique : quand la pédophilie a cessé d’être un débat. Le début du combat dans le coeur de la société.",
+  source: "https://larevuedesmedias.ina.fr/depuis-quand-les-medias-parlent-ils-de-pedophilie-pedocriminalite",
+  start_year: 0,
+  end_year: "1990",
+  public: true,
+  color: "#CDA2AB",
+  order: 10
+)

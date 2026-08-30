@@ -2,9 +2,9 @@
 class AssetBar
   PIXELS_PER_DECADE = 120
 
-  def initialize(asset, max_decade)
+  def initialize(asset)
     @asset = asset
-    @max_decade = max_decade
+    @max_decade = DateTime.now.year
   end
 
   def left_pos
@@ -28,7 +28,7 @@ class AssetBar
   end
 
   def end_year
-    (@asset.end_year || Date.today).to_i
+    (@asset.end_year || DateTime.now.year).to_i
   end
 
   def asset

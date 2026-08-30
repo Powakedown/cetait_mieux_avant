@@ -4,7 +4,7 @@ class TimelineGraphic
 
   def initialize(assets)
     @assets = assets
-    @max_decade = calculate_max_decade
+    @max_decade = DateTime.now.year
   end
 
   def max_decade
@@ -16,7 +16,7 @@ class TimelineGraphic
   end
 
   def asset_bars
-    @asset_bars ||= @assets.map { |asset| AssetBar.new(asset, @max_decade) }
+    @asset_bars ||= @assets.map { |asset| AssetBar.new(asset) }
   end
 
   def min_width
