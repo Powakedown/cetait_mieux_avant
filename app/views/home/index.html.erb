@@ -1,0 +1,71 @@
+<% graphic = TimelineGraphic.new(@assets) %>
+
+<div class="w-full min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+  <div class="relative p-8">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-cyan-500 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-10 w-96 h-96 bg-teal-500 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative z-10">
+      <div class="mb-2 text-sm font-mono text-cyan-400 tracking-widest text-3xl">
+        → TIMELINE ANALYSIS v1.0
+      </div>
+      <h1 class="text-5xl font-black mb-2 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+        HUMAN PROGRESS TIMELINE
+      </h1>
+      <p class="text-slate-400 mb-8 font-light text-lg">
+        A comprehensive statistical visualization of human advancement across centuries
+      </p>
+    </div>
+  </div>
+
+  <div class="px-8 pb-8">
+    <div class="rounded-xl border border-slate-700 bg-slate-800 backdrop-blur overflow-hidden shadow-2xl">
+      <div class="overflow-x-auto">
+        <div class="min-w-max">
+          <!-- En-tête avec les décennies -->
+          <div class="flex sticky top-0 bg-gradient-to-b from-slate-700 to-slate-800 z-20 shadow-lg border-b border-slate-700 backdrop-blur">
+            <div class="w-48 shrink-0 px-4 py-3 border-r border-slate-700">
+              <div class="text-xs font-mono text-cyan-400 tracking-widest">
+                ERA
+              </div>
+            </div>
+            <% graphic.decades_count.times do |i| %>
+              <% decade = graphic.max_decade - (i * 10) %>
+              <div class="w-32 shrink-0 text-center text-xs font-mono text-cyan-300 p-3 border-r border-slate-700 last:border-r-0">
+                <%= decade %>
+              </div>
+            <% end %>
+          </div>
+
+          <!-- Corps du graphique -->
+          <div>
+            <% graphic.asset_bars.each do |bar| %>
+              <div class="flex px-0 py-2 border-b border-slate-700 last:border-b-0 hover:bg-slate-700 transition-colors">
+                <!-- Nom et commentaire de l'asset (fixe à gauche) -->
+                <div class="w-48 shrink-0 sticky left-0 bg-gradient-to-r from-slate-800 via-slate-800 to-transparent z-10 px-4 py-3 border-r border-slate-700 flex items-center">
+                  <div>
+                    <div class="text-sm font-semibold text-slate-100">
+                      <%= bar.asset.name %>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Frise chronologique -->
+                <div class="relative mb-4 flex-1" style="min-width: <%= graphic.min_width %>px; min-height: 30px">
+                  <!-- Barre de l'asset -->
+                  <div class="absolute top-1 -translate-y-1 rounded-lg opacity-85 hover:opacity-100 transition-opacity border border-slate-600 flex items-center px-3" style="left: <%= bar.left_pos %>px; width: <%= bar.bar_width %>px; background-color: <%= bar.asset.color %>;">
+                    <div class="text-xs font-medium text-slate-900 truncate">
+                      <%= bar.asset.comment %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
