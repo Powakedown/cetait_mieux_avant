@@ -3,8 +3,8 @@ class TimelineGraphic
   PIXELS_PER_DECADE = 120
   MAX_DECADE = (DateTime.now.year / 10.0).ceil * 10
 
-  def initialize(assets)
-    @assets = assets
+  def initialize
+    @assets = Asset.order(:order) 
     @max_decade = MAX_DECADE
   end
 
@@ -22,14 +22,5 @@ class TimelineGraphic
 
   def min_width
     decades_count * PIXELS_PER_DECADE
-  end
-
-  private
-
-  def calculate_max_decade
-    max_end_year = @assets.map(&:end_year).map(&:to_i).max || 0
-    max_start_year = @assets.map(&:start_year).map(&:to_i).max || 0
-    max_year = [max_end_year, max_start_year].max
-    (max_year.to_f / 10).ceil * 10
   end
 end

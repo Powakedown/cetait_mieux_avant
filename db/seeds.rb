@@ -243,7 +243,7 @@ Asset.find_or_create_by!(
   comment: "Popularisation des jeux vidéo en France avec l'arrivée des consoles et micro-ordinateurs grand public.",
   source: "https://fr.wikipedia.org/wiki/Histoire_du_jeu_vid%C3%A9o_en_France",
   start_year: "1980",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#048A81",
   order: 9
@@ -255,7 +255,7 @@ Asset.find_or_create_by!(
   comment: "Généralisation des réseaux sociaux en France avec l'arrivée de plateformes comme Facebook, Twitter, et LinkedIn.",
   source: "https://fr.wikipedia.org/wiki/R%C3%A9seau_social",
   start_year: "2005",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#06D6A0",
   order: 10
@@ -267,7 +267,7 @@ Asset.find_or_create_by!(
   comment: "Généralisation du chauffage central dans les foyers français, remplaçant les poêles et cheminées traditionnelles.",
   source: "https://fr.wikipedia.org/wiki/Chauffage_central",
   start_year: "1955",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#54C6EB",
   order: 11
@@ -279,14 +279,42 @@ Asset.find_or_create_by!(
   comment: "Accès régulier à la viande dans l'alimentation quotidienne des Français, grâce à l'amélioration des conditions économiques et des systèmes de production.",
   source: "https://fr.wikipedia.org/wiki/Consommation_de_viande_en_France",
   start_year: "1960",
-  end_year: Date.today.year.to_s,
+  end_year: nil,
   public: true,
   color: "#8A89C0",
   order: 12
 )
 
+Asset.find_or_create_by!(
+  name: "Réfrigérateur",
+  comment: "Généralisation du réfrigérateur dans les foyers français",
+  source: "https://fr.wikipedia.org/wiki/Histoire_du_r%C3%A9frig%C3%A9rateur",
+  start_year: "1960",
+  end_year: nil,
+  public: true,
+  color: "#06D6A0",
+  order: 18
+)
+
+Asset.find_or_create_by!(
+  name: "Chimiothérapie",
+  comment: "Généralisation de l'accès à la chimiothérapie en France",
+  source: "https://fr.wikipedia.org/wiki/Histoire_de_la_chimioth%C3%A9rapie",
+  start_year: "1970",
+  end_year: nil,
+  public: true,
+  color: "#048A81",
+  order: 19
+)
+
+# Asset
+# revoir Liberté de la presse en timeline
+# lave linge
 #
 # Timeline :
 # cause première de mort
 # guerres
 # congé payés
+# espérance de vie
+# mort des accidents de la route
+# Nombre d'heure de travail journalier
