@@ -43,6 +43,13 @@ Fait en sorte que le timeline soit plus compact sur mobile.
 - Le texte d'explication en dessous du titre à déplier derrière un accordéon et un bouton "en savoir plus" (uniquement en mobile)
 - globalement essayer de faire en sorte que le nom des assets qui est en colonne un tiers de l'écran
 
+# 7. Era
+
+- Créer d'un modèle Era avec un nom, une description, une date de début, une date de fin.
+- Créer d'un modèle Comment, qui fait la jonction entre une Era et un Asset, qui possède une description
+- Ajouter les relations active_record entre eux dans les models
+- Ne pas oublier les foreign keys, et les index
+
 # Ajout de boutons de récap : "vivre à l'époque de Napoléon" => vous aurez l'honneur de profiter de :
 # Ajout d'un lien vers la source
 # Publication sur les réseaux sociaux au travers de l'IA
