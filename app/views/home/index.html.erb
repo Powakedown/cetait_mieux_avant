@@ -6,11 +6,18 @@
       → ANALYSE CHRONOLOGIQUE
     </div>
     <h1>C'était mieux avant ?</h1>
-    <p class="timeline-tagline">
-      Les dates correspondent aux périodes où les avancées sont adoptés par la majorité de la population en France métropolitaine, pas leur invention.
-      Elles peuvent ne pas être totales mais représentent une amélioration significative pour la société.
-      Les disparitions de phénomènes délétères ou nuisibles à la société sont également représentées.
-    </p>
+    <div class="timeline-accordion" data-controller="accordion">
+      <button class="timeline-accordion-button" data-accordion-target="button" aria-expanded="false" aria-controls="timeline-description" data-action="click->accordion#toggle">
+        <span class="timeline-accordion-label">En savoir plus</span>
+      </button>
+      <div class="timeline-accordion-content" id="timeline-description" data-accordion-target="content" aria-expanded="false">
+        <p class="timeline-tagline">
+          Les dates correspondent aux périodes où les avancées sont adoptés par la majorité de la population en France métropolitaine, pas leur invention.
+          Elles peuvent ne pas être totales mais représentent une amélioration significative pour la société.
+          Les disparitions de phénomènes délétères ou nuisibles à la société sont également représentées.
+        </p>
+      </div>
+    </div>
   </div>
 
   <div class="timeline-container">

@@ -4,7 +4,7 @@ class TimelineGraphic
   MAX_DECADE = (DateTime.now.year / 10.0).ceil * 10
 
   def initialize
-    @assets = Asset.order(:order) 
+    @assets = Asset.order(:order)
     @max_decade = MAX_DECADE
   end
 

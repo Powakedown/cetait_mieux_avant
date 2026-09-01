@@ -1,16 +1,3 @@
-# Meilleure avancées technologiques humaines
-# - eau potable au robinet
-# - électricité domestique
-# - internet
-# - antibiotiques
-# - lèpre
-# - voiture
-# - salle de bain à domicile
-# - démocratie
-# - travail des enfants
-# - vote des femmes
-# - esclavage
-
 Asset.find_or_create_by!(
   name: "Eau courante",
   comment: "Eau potable au robinet en France disponible couramment dans les foyers, environ 80% des foyers en 1950.",
@@ -310,6 +297,9 @@ Asset.find_or_create_by!(
 # Asset
 # revoir Liberté de la presse en timeline
 # lave linge
+# produit phytosanitaire
+# plastique
+# station d'épuration
 #
 # Timeline :
 # cause première de mort
@@ -318,3 +308,9 @@ Asset.find_or_create_by!(
 # espérance de vie
 # mort des accidents de la route
 # Nombre d'heure de travail journalier
+# Liberté d'expression
+# Famine
+#
+#
+# Santé
+# Alimentation

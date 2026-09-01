@@ -35,7 +35,15 @@ Make the whole page looking like a futuristic, compact, statictic page. Update s
 Ajoute un petit triangle sur les timeline-bars-container pour les timeline-bar dont la position dépasse le cadre de l'écran et ne sont pas visible.
 Ce petit triangle permet de scroller automatiquement vers le début de la timeline-bar. Le début de la timeline-bar se placerait horizontal au centre.
 
-# Ajout de boutons de récap : "vivre à l'époque de Napoléon" => vous aurez l'honneur de profiter de : 
+# 6. Responsive
+
+Fait en sorte que le timeline soit plus compact sur mobile.
+- Le padding doivent être plus petit.
+- Les décennie moins large
+- Le texte d'explication en dessous du titre à déplier derrière un accordéon et un bouton "en savoir plus" (uniquement en mobile)
+- globalement essayer de faire en sorte que le nom des assets qui est en colonne un tiers de l'écran
+
+# Ajout de boutons de récap : "vivre à l'époque de Napoléon" => vous aurez l'honneur de profiter de :
 # Ajout d'un lien vers la source
 # Publication sur les réseaux sociaux au travers de l'IA
 # Développer un serveur MCP afin de pouvoir ajouter un asset directement par IA
