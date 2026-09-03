@@ -55,6 +55,11 @@ Fait en sorte que le timeline soit plus compact sur mobile.
   - celle dont le nom fait penser à des avancées humaines, mettre à jour en le type: "progress"
   - les autres en "phenomenom"
 
+# 8 - Mise à jour du readme.md
+
+- mettre à jour le fichier readme.md avec le plan que tu m'a donnée dans la dernière conversation du projet CetaitMieuxAvant
+- fait un symlink agents.md afin que tu puisses le trouver par là également
+
 
 # Ajout de boutons de récap : "vivre à l'époque de Napoléon" => vous aurez l'honneur de profiter de :
 # Ajout d'un lien vers la source
