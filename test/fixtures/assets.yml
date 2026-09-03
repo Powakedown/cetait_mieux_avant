@@ -11,6 +11,14 @@
 #  order      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  color      :string           default("neutral")
+#  public     :boolean          default(TRUE), not null
+#  validation :string           default("draft"), not null
+#  type       :string
+#
+# Indexes
+#
+#  index_assets_on_type  (type)
 #
 
 one:

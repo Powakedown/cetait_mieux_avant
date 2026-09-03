@@ -43,12 +43,18 @@ Fait en sorte que le timeline soit plus compact sur mobile.
 - Le texte d'explication en dessous du titre à déplier derrière un accordéon et un bouton "en savoir plus" (uniquement en mobile)
 - globalement essayer de faire en sorte que le nom des assets qui est en colonne un tiers de l'écran
 
-# 7. Era
+# 7. Comment on Asset
 
-- Créer d'un modèle Era avec un nom, une description, une date de début, une date de fin.
-- Créer d'un modèle Comment, qui fait la jonction entre une Era et un Asset, qui possède une description
-- Ajouter les relations active_record entre eux dans les models
+- Créer un modèle Era, qui possède :name, :description, :source, :question (tous en string)
+- Créer un modèle Comment, qui fait la jonction entre 1 asset et 1 era, qui possède une description
 - Ne pas oublier les foreign keys, et les index
+- Ajouter les relations active_record entre eux dans les models
+- Ajouter une colonne "type" sur Asset, migrer etc...
+- Le "type" doit être un enum et prend les valeurs suivantes pour l'instant: "progress", "era","phenomenom"
+- Mettre à jour les assets dans la seed.rb :
+  - celle dont le nom fait penser à des avancées humaines, mettre à jour en le type: "progress"
+  - les autres en "phenomenom"
+
 
 # Ajout de boutons de récap : "vivre à l'époque de Napoléon" => vous aurez l'honneur de profiter de :
 # Ajout d'un lien vers la source

@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: eras
+#
+#  id          :bigint           not null, primary key
+#  name        :string
+#  description :string
+#  source      :string
+#  question    :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+class Era < ApplicationRecord
+  has_many :comments, dependent: :destroy
+  has_many :assets, through: :comments
+
+  validates_presence_of :name, :question
+end

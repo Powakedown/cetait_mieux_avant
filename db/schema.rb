@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_07_090032) do
+ActiveRecord::Schema[7.1].define(version: 2026_09_03_195918) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,30 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_07_090032) do
     t.string "color", default: "neutral"
     t.boolean "public", default: true, null: false
     t.string "validation", default: "draft", null: false
+    t.string "type"
+    t.index ["type"], name: "index_assets_on_type"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.bigint "asset_id", null: false
+    t.bigint "era_id", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asset_id", "era_id"], name: "index_comments_on_asset_id_and_era_id", unique: true
+    t.index ["asset_id"], name: "index_comments_on_asset_id"
+    t.index ["era_id"], name: "index_comments_on_era_id"
+  end
+
+  create_table "eras", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "source"
+    t.string "question"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "comments", "assets"
+  add_foreign_key "comments", "eras"
 end

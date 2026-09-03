@@ -6,7 +6,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#048A81",
-  order: 1
+  order: 1,
+  type: "progress"
 )
 puts "Eau potable asset created"
 Asset.find_or_create_by!(
@@ -17,7 +18,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#06D6A0",
-  order: 4
+  order: 4,
+  type: "progress"
 )
 puts "Électricité domestique asset created"
 Asset.find_or_create_by!(
@@ -28,7 +30,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#54C6EB",
-  order: 18
+  order: 18,
+  type: "progress"
 )
 puts "Internet asset created"
 Asset.find_or_create_by!(
@@ -39,7 +42,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#8A89C0",
-  order: 2
+  order: 2,
+  type: "progress"
 )
 puts "Antibiotiques asset created"
 Asset.find_or_create_by!(
@@ -50,7 +54,8 @@ Asset.find_or_create_by!(
   end_year: "1950",
   public: true,
   color: "#CDA2AB",
-  order: 20
+  order: 20,
+  type: "phenomenom"
 )
 puts "Lèpre asset created"
 Asset.find_or_create_by!(
@@ -61,7 +66,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#048A81",
-  order: 17
+  order: 17,
+  type: "progress"
 )
 puts "Voiture asset created"
 Asset.find_or_create_by!(
@@ -72,7 +78,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#06D6A0",
-  order: 12
+  order: 12,
+  type: "progress"
 )
 puts "Salle de bain asset created"
 Asset.find_or_create_by!(
@@ -83,7 +90,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#54C6EB",
-  order: 5
+  order: 5,
+  type: "progress"
 )
 puts "Démocratie asset created"
 Asset.find_or_create_by!(
@@ -94,7 +102,8 @@ Asset.find_or_create_by!(
   end_year: "1904",
   public: true,
   color: "#CDA2AB",
-  order: 9
+  order: 9,
+  type: "phenomenom"
 )
 puts "Travail des enfants asset created"
 Asset.find_or_create_by!(
@@ -105,7 +114,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#8A89C0",
-  order: 7
+  order: 7,
+  type: "progress"
 )
 puts "Vote des femmes asset created"
 Asset.find_or_create_by!(
@@ -116,7 +126,8 @@ Asset.find_or_create_by!(
   end_year: "1848",
   public: true,
   color: "#CDA2AB",
-  order: 10
+  order: 10,
+  type: "phenomenom"
 )
 # Sécurité sociale (1945 : création en France)
 Asset.find_or_create_by!(
@@ -127,7 +138,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#048A81",
-  order: 8
+  order: 8,
+  type: "progress"
 )
 
 # SMIC (1950 : création du SMIG, ancêtre du SMIC)
@@ -139,7 +151,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#06D6A0",
-  order: 16
+  order: 16,
+  type: "progress"
 )
 
 # Congés payés (1936 : introduction en France)
@@ -151,7 +164,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#54C6EB",
-  order: 15
+  order: 15,
+  type: "progress"
 )
 
 # Vaccination (1800 : généralisation en France après la découverte de Jenner en 1798)
@@ -163,7 +177,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#8A89C0",
-  order: 3
+  order: 3,
+  type: "progress"
 )
 
 # L'école (1882 : lois Jules Ferry, école gratuite, laïque et obligatoire)
@@ -175,7 +190,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#048A81",
-  order: 6
+  order: 6,
+  type: "progress"
 )
 
 # Liberté de la presse (1881 : loi sur la liberté de la presse)
@@ -187,7 +203,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#06D6A0",
-  order: 11
+  order: 11,
+  type: "progress"
 )
 
 # Royauté (disparition en 1870 : fin de la monarchie en France avec la Troisième République)
@@ -199,7 +216,8 @@ Asset.find_or_create_by!(
   end_year: "1870",
   public: true,
   color: "#CDA2AB",
-  order: 19
+  order: 19,
+  type: "phenomenom"
 )
 
 Asset.find_or_create_by!(
@@ -210,7 +228,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#CDA2AB",
-  order: 13
+  order: 13,
+  type: "phenomenom"
 )
 
 Asset.find_or_create_by!(
@@ -221,7 +240,8 @@ Asset.find_or_create_by!(
   end_year: "1990",
   public: true,
   color: "#CDA2AB",
-  order: 14
+  order: 14,
+  type: "phenomenom"
 )
 
 # Jeu vidéo (années 1980 : popularisation avec les consoles comme la NES et les micro-ordinateurs)
@@ -233,7 +253,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#048A81",
-  order: 9
+  order: 9,
+  type: "progress"
 )
 
 # Réseaux sociaux (années 2000 : popularisation avec Facebook, Twitter, etc.)
@@ -245,7 +266,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#06D6A0",
-  order: 10
+  order: 10,
+  type: "progress"
 )
 
 # Chauffage domestique (années 1950-1960 : généralisation du chauffage central)
@@ -257,7 +279,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#54C6EB",
-  order: 11
+  order: 11,
+  type: "progress"
 )
 
 # Viande au quotidien (années 1960 : accès régulier à la viande pour la majorité de la population)
@@ -269,7 +292,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#8A89C0",
-  order: 12
+  order: 12,
+  type: "progress"
 )
 
 Asset.find_or_create_by!(
@@ -280,7 +304,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#06D6A0",
-  order: 18
+  order: 18,
+  type: "progress"
 )
 
 Asset.find_or_create_by!(
@@ -291,7 +316,8 @@ Asset.find_or_create_by!(
   end_year: nil,
   public: true,
   color: "#048A81",
-  order: 19
+  order: 19,
+  type: "progress"
 )
 
 # Asset
