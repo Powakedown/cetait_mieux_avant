@@ -320,6 +320,58 @@ Asset.find_or_create_by!(
   type: "progress"
 )
 
+# === Eras ===
+
+Era.find_or_create_by!(
+  name: "Napoléon",
+  question: "Vivre du temps de Napoléon ?",
+  description: "L'épopée napoléonienne, du Consulat à l'Empire : guerres napoléoniennes, code civil, expansion territoriale, faste impérial et batailles mythiques, avant la chute finale à Waterloo.",
+  source: "https://fr.wikipedia.org/wiki/Napol%C3%A9on_Ier",
+  start_year: Date.new(1799, 11, 9),
+  end_year: Date.new(1815, 6, 18)
+)
+puts "Era Napoléon created"
+
+Era.find_or_create_by!(
+  name: "Victor Hugo",
+  question: "Vivre du temps de Victor Hugo ?",
+  description: "Le siècle de Victor Hugo : romantisme, révolutions, République et empire, luttes sociales et engagement littéraire, de la Restauration à la Troisième République.",
+  source: "https://fr.wikipedia.org/wiki/Victor_Hugo",
+  start_year: Date.new(1802, 2, 26),
+  end_year: Date.new(1885, 5, 22)
+)
+puts "Era Victor Hugo created"
+
+Era.find_or_create_by!(
+  name: "De Gaulle",
+  question: "Vivre du temps de Charles De Gaulle ?",
+  description: "L'époque de Gaulle : Seconde Guerre mondiale, Résistance, fondation de la Ve République, décolonisation, événements de Mai 68 et modernisation de la France.",
+  source: "https://fr.wikipedia.org/wiki/Charles_de_Gaulle",
+  start_year: Date.new(1890, 11, 22),
+  end_year: Date.new(1970, 11, 9)
+)
+puts "Era De Gaulle created"
+
+Era.find_or_create_by!(
+  name: "Louis XIV",
+  question: "Vivre du temps de Louis XIV ?",
+  description: "Le Roi-Soleil et Versailles : absolutisme, faste de la cour, guerres d'expansion, classique français, arts et grandeur, du milieu du XVIIe siècle au début du XVIIIe.",
+  source: "https://fr.wikipedia.org/wiki/Louis_XIV",
+  start_year: Date.new(1643, 5, 14),
+  end_year: Date.new(1715, 9, 1)
+)
+puts "Era Louis XIV created"
+
+Era.find_or_create_by!(
+  name: "Moyen Âge",
+  question: "Vivre au Moyen Âge ?",
+  description: "Le Moyen Âge : seigneurs, châteaux forts, famines, épidémies, religion omniprésente et vie quotidienne rude, de la chute de Rome à la Renaissance.",
+  source: "https://fr.wikipedia.org/wiki/Moyen_%C3%82ge",
+  start_year: Date.new(476, 1, 1),
+  end_year: Date.new(1453, 7, 21)
+)
+puts "Era Moyen Âge created"
+
 # Asset
 # revoir Liberté de la presse en timeline
 # lave linge

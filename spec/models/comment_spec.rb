@@ -28,7 +28,7 @@ RSpec.describe Comment, type: :model do
 
     describe 'uniqueness' do
       let(:asset) { Asset.create!(name: "Test", comment: "c", source: "s", start_year: "2000", order: 1, color: "#048A81", type: "progress") }
-      let(:era) { Era.create!(name: "Test era") }
+      let(:era) { Era.create!(name: "Test era", question: "Test question?") }
 
       it 'validates uniqueness of asset_id scoped to era_id' do
         Comment.create!(asset: asset, era: era, description: "first")

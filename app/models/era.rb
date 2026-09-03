@@ -9,6 +9,8 @@
 #  question    :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  start_year  :date
+#  end_year    :date
 #
 class Era < ApplicationRecord
   has_many :comments, dependent: :destroy

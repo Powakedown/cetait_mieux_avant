@@ -9,6 +9,8 @@
 #  question    :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  start_year  :date
+#  end_year    :date
 #
 require 'rails_helper'
 
@@ -27,5 +29,7 @@ RSpec.describe Era, type: :model do
     it { should have_db_column(:description).of_type(:string) }
     it { should have_db_column(:source).of_type(:string) }
     it { should have_db_column(:question).of_type(:string) }
+    it { should have_db_column(:start_year).of_type(:date) }
+    it { should have_db_column(:end_year).of_type(:date) }
   end
 end

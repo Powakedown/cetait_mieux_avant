@@ -60,6 +60,41 @@ Fait en sorte que le timeline soit plus compact sur mobile.
 - mettre à jour le fichier readme.md avec le plan que tu m'a donnée dans la dernière conversation du projet CetaitMieuxAvant
 - fait un symlink agents.md afin que tu puisses le trouver par là également
 
+# 9 - Seed des Eras
+
+- ajouter les colonnes de type date start_year et end_year au modèle Era
+- faire la migration
+- ajouter au seed.rb les ères suivantes :
+  - name : napoléon
+    question : "Vivre du temps de Napoléon ?"
+    description: créer Une petite description du temps glorieux de Napoléon
+    date de début: recherche dans tes connaissances la date
+    date de fin : recherche dans tes connaissances la date
+
+  - name : "victor hugo"
+    question : "Vivre du temps de Victor Hugo ?"
+    description: créer Une petite description du temps glorieux de Victor Hugo
+    date de début: recherche dans tes connaissances la date
+    date de fin : recherche dans tes connaissances la date
+
+  - name : "De Gaulle"
+    question : "Vivre du temps de Charles De Gaulle ?"
+    description: créer Une petite description du temps glorieux de De Gaulle
+    date de début: recherche dans tes connaissances la date
+    date de fin : recherche dans tes connaissances la date
+
+  - name : Louis XIV
+    question : "Vivre du temps de Louis XIV ?"
+    description: créer Une petite description du temps glorieux de Louis XIV
+    date de début: recherche dans tes connaissances la date
+    date de fin : recherche dans tes connaissances la date
+
+  - name : Moyen Âge
+    question : "Vivre au moyen âge ?"
+    date de début: recherche dans tes connaissances la date
+    date de fin : recherche dans tes connaissances la date
+
+
 
 # Ajout de boutons de récap : "vivre à l'époque de Napoléon" => vous aurez l'honneur de profiter de :
 # Ajout d'un lien vers la source
