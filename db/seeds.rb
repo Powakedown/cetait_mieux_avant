@@ -372,6 +372,98 @@ Era.find_or_create_by!(
 )
 puts "Era Moyen Âge created"
 
+# === Comments : liaison Asset ↔ Era par chevauchement d'intervalles ===
+
+# Descriptions spécifiques (<= 200 caractères) de chaque asset dans chaque ère.
+era_comments = {
+  "Napoléon" => {
+    "Démocratie" => "La Révolution a fait tomber la royauté, mais Napoléon rétablit un régime autoritaire. Le suffrage est restreint et le pouvoir concentré entre ses mains.",
+    "Travail des enfants" => "Le travail des enfants est monnaie courante dans les ateliers et campagnes, sans protection légale. L'industrialisation naissante en exploite la main-d'œuvre.",
+    "Esclavage" => "Napoléon rétablit l'esclavage en 1802 dans les colonies, annulant l'abolition de 1794. Des milliers de personnes sont à nouveau réduites en esclavage.",
+    "Vaccination" => "La vaccination contre la variole se diffuse après la découverte de Jenner (1798). Napoléon la favorise, notamment dans l'armée.",
+    "Royauté" => "Napoléon rétablit un régime monarchique en se proclamant Empereur en 1804, recréant cour et pouvoir héréditaire sur les ruines de la Révolution.",
+    "Lèpre" => "La lèpre a largement disparu de France à cette époque, confinée à quelques rares foyers. Elle n'est plus un problème de santé publique majeur.",
+    "Culture du viol" => "Les femmes sont soumises à l'autorité maritale. Le viol conjugal n'est pas reconnu, le consentement est absent du Code civil de 1804.",
+    "Pédophilie" => "La pédocriminalité n'est pas identifiée comme telle. La minorité est peu protégée par la loi, le sujet reste tabou et invisible."
+  },
+  "Victor Hugo" => {
+    "Démocratie" => "Le suffrage universel masculin est établi en 1848. La République est proclamée, puis l'Empire revient, avant la Troisième République en 1870.",
+    "Travail des enfants" => "Le travail des enfants reste massif en usine. La loi de 1841 fixe un âge minimum, mais son application est faible. La loi de 1874 renforce les protections.",
+    "Esclavage" => "L'esclavage est aboli définitivement en 1848 sous la Seconde République, grâce à Victor Schoelcher. Les colonies françaises sont libérées.",
+    "Vaccination" => "La vaccination contre la variole se généralise dans le siècle. Obligatoire pour les enfants en 1902, elle est déjà bien implantée sous le Second Empire.",
+    "Royauté" => "La monarchie disparaît définitivement en 1870. Charles X a fui en 1830, Louis-Philippe en 1848. La royauté ne reviendra plus.",
+    "Lèpre" => "La lèpre a quasiment disparu du territoire français au XIXe siècle, reléguée aux marges de l'Empire colonial.",
+    "Culture du viol" => "Le Code civil maintient la femme sous l'autorité du mari. Hugo dénonce l'injustice sociale, mais le consentement reste un non-sujet juridique.",
+    "Pédophilie" => "La protection des mineurs progresse timidement. La loi de 1904 viendra plus tard, mais la pédocriminalité reste largement ignorée et impunie.",
+    "École gratuite et laïque" => "Les lois Ferry arrivent en 1882, à la fin de la vie de Hugo. L'école devient gratuite, laïque et obligatoire, aboutissement des combats républicains.",
+    "Liberté de la presse" => "La loi du 29 juillet 1881 consacre la liberté de la presse. Hugo, exilé, incarne la lutte contre la censure sous le Second Empire."
+  },
+  "De Gaulle" => {
+    "Travail des enfants" => "Réprimé depuis la loi de 1904, le travail des enfants a quasiment disparu. L'école obligatoire est devenue la norme sous la Ve République.",
+    "Lèpre" => "La lèpre n'est plus présente en France métropolitaine. Le dernier foyer disparaît dans les années 1950 grâce aux antibiotiques.",
+    "Culture du viol" => "Le viol conjugal commence à peine à être reconnu. La loi de 1970 viendra plus tard. La culture du viol reste largement impunie et normalisée.",
+    "Pédophilie" => "La loi de 1945 protège les mineurs, mais la pédocriminalité reste taboue. Les affaires éclateront dans les médias à partir des années 1990.",
+    "Congés payés" => "Introduits en 1936, ils se développent sous la IVe et la Ve République. En 1969, les Français disposent de 3 à 4 semaines de congés payés.",
+    "Vote des femmes" => "Acquis en 1944, les femmes votent pour la première fois en 1945. Sous De Gaulle, la parité politique n'est cependant pas encore effective.",
+    "Sécurité sociale" => "Créée en 1945, la Sécurité sociale se généralise sous la IVe et la Ve République. En 1970, la quasi-totalité des Français est couverte.",
+    "SMIC" => "Le SMIG, ancêtre du SMIC, est créé en 1950. Il garantit un salaire minimum, mais son niveau reste modeste sous la présidence de Gaulle.",
+    "Eau courante" => "L'eau courante se généralise dans les foyers dans les années 1950-1960. En 1970, une grande majorité des foyers en bénéficie.",
+    "Électricité domestique" => "L'électricité est quasiment généralisée en 1970. Les campagnes, longtemps retardataires, sont désormais raccordées au réseau électrique.",
+    "Antibiotiques" => "La pénicilline se généralise après-guerre. Sous De Gaulle, les antibiotiques transforment la médecine et font chuter la mortalité infectieuse.",
+    "Vaccination" => "La vaccination est devenue massive. La variole recule, le BCG se généralise, le vaccin contre la polio (1956) change la santé publique.",
+    "École gratuite et laïque" => "L'école gratuite, laïque et obligatoire est le socle républicain. Le collège unique arrivera après De Gaulle en 1975.",
+    "Liberté de la presse" => "La liberté de la presse est solidement établie. Après la censure de Vichy, la presse renaît et se diversifie sous la Ve République.",
+    "Chauffage domestique" => "Le chauffage central se généralise dans les années 1960. En 1970, il équipe une part croissante des foyers français.",
+    "Viande" => "La viande devient accessible au quotidien pour la majorité des Français dans les années 1960, grâce à la croissance et à l'agriculture intensive.",
+    "Réfrigérateur" => "Le réfrigérateur se généralise dans les années 1960. En 1970, la plupart des foyers français en sont équipés, transformant l'alimentation.",
+    "Démocratie" => "La démocratie est solidement établie sous la Ve République. Le suffrage universel direct élit le président à partir de 1962.",
+    "Voiture" => "La voiture se démocratise dans les années 1960. En 1970, environ la moitié des ménages français en possèdent une.",
+    "Salle de bain" => "La salle de bain se généralise dans les années 1960-1970, transformant le confort domestique. Elle reste inégalement répartie.",
+    "Chimiothérapie" => "La chimiothérapie se développe dans les années 1960-1970. Les premiers protocoles efficaces apparaissent, ouvrant un espoir contre le cancer."
+  },
+  "Louis XIV" => {
+    "Royauté" => "Louis XIV incarne l'absolutisme royal : « L'État, c'est moi. » Versailles devient le centre du pouvoir et de l'étiquette de cour.",
+    "Lèpre" => "La lèpre a largement reculé en France au XVIIe siècle, mais des maladreries subsistent. La maladie frappe encore les marges.",
+    "Travail des enfants" => "Le travail des enfants est la norme dans les champs et ateliers. Dès 7 ans, ils participent à l'économie familiale sans protection.",
+    "Esclavage" => "L'esclavage sévit dans les colonies. Le Code noir de 1685 réglemente l'esclavage, légitimant et organisant la condition servile.",
+    "Culture du viol" => "Les femmes sont soumises au mari. Le viol conjugal est inconcevable, le consentement féminin n'existe pas juridiquement.",
+    "Pédophilie" => "La protection des mineurs est inexistante. Le mariage précoce est toléré et la minorité sexuelle n'est pas un concept juridique."
+  },
+  "Moyen Âge" => {
+    "Royauté" => "La royauté se construit lentement. Les Capétiens font face à des seigneurs puissants et à un pouvoir fragmenté avant la centralisation progressive.",
+    "Lèpre" => "La lèpre est endémique au Moyen Âge. Des léproseries parsèment le pays pour isoler les malades, craints et marginalisés.",
+    "Travail des enfants" => "Le travail des enfants est universel et nécessaire à la survie. Dès le plus jeune âge, les enfants travaillent aux champs ou aux ateliers.",
+    "Esclavage" => "L'esclavage existe encore au début du Moyen Âge, mais décline avec la féodalité au profit du servage, qui le remplace graduellement.",
+    "Culture du viol" => "Le droit médiéval soumet la femme au père puis au mari. Le consentement n'est pas un concept juridique, le viol est peu réprimé.",
+    "Pédophilie" => "La pédocriminalité n'est pas identifiée. Les mariages précoces et la mortalité infantile élevée caractérisent cette société rude."
+  }
+}
+
+# Conversion d'une année d'asset (string/int/nil) en entier ; nil = +infini.
+def asset_start_int(asset) = asset.start_year.to_i
+def asset_end_int(asset)   = asset.end_year.nil? ? Float::INFINITY : asset.end_year.to_i
+
+Era.all.each do |era|
+  era_start  = era.start_year.year
+  era_end    = era.end_year.year
+  asset_desc = era_comments[era.name] || {}
+
+  Asset.all.each do |asset|
+    a_start = asset_start_int(asset)
+    a_end   = asset_end_int(asset)
+    # chevauchement d'intervalles [a_start, a_end] ∩ [era_start, era_end]
+    next unless a_start <= era_end && a_end >= era_start
+
+    description = asset_desc[asset.name]
+    next if description.nil?
+
+    comment = Comment.find_or_initialize_by(asset: asset, era: era)
+    comment.description = description
+    comment.save!
+  end
+end
+puts "Comments created linking Assets and Eras"
+
 # Asset
 # revoir Liberté de la presse en timeline
 # lave linge
