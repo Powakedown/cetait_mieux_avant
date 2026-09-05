@@ -377,10 +377,9 @@ puts "Era Moyen Âge created"
 # Descriptions spécifiques (<= 200 caractères) de chaque asset dans chaque ère.
 era_comments = {
   "Napoléon" => {
-    "Démocratie" => "La Révolution a fait tomber la royauté, mais Napoléon rétablit un régime autoritaire. Le suffrage est restreint et le pouvoir concentré entre ses mains.",
     "Travail des enfants" => "Le travail des enfants est monnaie courante dans les ateliers et campagnes, sans protection légale. L'industrialisation naissante en exploite la main-d'œuvre.",
     "Esclavage" => "Napoléon rétablit l'esclavage en 1802 dans les colonies, annulant l'abolition de 1794. Des milliers de personnes sont à nouveau réduites en esclavage.",
-    "Vaccination" => "La vaccination contre la variole se diffuse après la découverte de Jenner (1798). Napoléon la favorise, notamment dans l'armée.",
+    "Vaccination" => "Début de la vaccination contre la variole se diffuse après la découverte de Jenner (1798). Napoléon la favorise, notamment dans l'armée.",
     "Royauté" => "Napoléon rétablit un régime monarchique en se proclamant Empereur en 1804, recréant cour et pouvoir héréditaire sur les ruines de la Révolution.",
     "Lèpre" => "La lèpre a largement disparu de France à cette époque, confinée à quelques rares foyers. Elle n'est plus un problème de santé publique majeur.",
     "Culture du viol" => "Les femmes sont soumises à l'autorité maritale. Le viol conjugal n'est pas reconnu, le consentement est absent du Code civil de 1804.",

@@ -94,6 +94,11 @@ Fait en sorte que le timeline soit plus compact sur mobile.
     date de début: recherche dans tes connaissances la date
     date de fin : recherche dans tes connaissances la date
 
+# 10 - Lien Asset et Era
+
+  - Dans la seed, relier les Assets et les Era par un Comment en fonction des dates : l'asset doit un interval (start_year-end_year) qui match avec l'interval de l'era
+  - Dans chaque Comment, sers toi de éventuellement de pour Napoléon de skils/history/references/napoleon.md pour compléter les descriptions sinon sers toi de tes connaissances pour ajouter une petite description (max 200 caractère) concernant cet asset à l'époque en question.
+
 
 
 # Ajout de boutons de récap : "vivre à l'époque de Napoléon" => vous aurez l'honneur de profiter de :

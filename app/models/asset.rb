@@ -24,7 +24,10 @@ class Asset < ApplicationRecord
   # `type` is used as a regular enum column, not for Single Table Inheritance
   self.inheritance_column = nil
 
-  enum type: { progress: "progress", era: "era", phenomenom: "phenomenom" }
+  enum type: {
+    progress: "progress",
+    phenomenom: "phenomenom"
+  }
 
   has_many :comments, dependent: :destroy
   has_many :eras, through: :comments
@@ -35,9 +38,15 @@ class Asset < ApplicationRecord
     :order,
     :start_year,
     :source
-    validates :color, inclusion: { in:
-      %w[#048A81 #06D6A0 #54C6EB #8A89C0 #CDA2AB]
-    }
+  validates :color, inclusion: { in:
+    %w[
+      #048A81
+      #06D6A0
+      #54C6EB
+      #8A89C0
+      #CDA2AB
+    ]
+  }
 
   scope :displayable, -> { where(public: true).order(:order) }
 end

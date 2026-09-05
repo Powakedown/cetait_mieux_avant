@@ -28,7 +28,7 @@ bundle exec rspec
 
 ## Plan / Feuille de route
 
-Le détail du plan vit dans [`plan.md`](./plan.md). Récapitulatif ci-dessous.
+Le détail du plan vit dans [`plan.md`](./plan.md). Ne pas répéter le plan ici.
 
 ### 1. Feature principale : frise chronologique
 
