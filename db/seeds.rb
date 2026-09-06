@@ -418,6 +418,26 @@ Era.find_or_create_by!(
 )
 puts "Era Jésus Christ created"
 
+Era.find_or_create_by!(
+  name: "Marie Curie",
+  question: "Vivre du temps de Marie Curie ?",
+  description: "L'époque de Marie Curie : Belle Époque et Première Guerre mondiale, rayonnement scientifique, prix Nobel, débuts de la radiologie et de la physique moderne, avant l'entre-deux-guerres.",
+  source: "https://fr.wikipedia.org/wiki/Marie_Curie",
+  start_year: Date.new(1867, 11, 7),
+  end_year: Date.new(1934, 7, 4)
+)
+puts "Era Marie Curie created"
+
+Era.find_or_create_by!(
+  name: "Jacques Chirac",
+  question: "Vivre du temps de Jacques Chirac ?",
+  description: "L'époque de Chirac : Trente Glorieuses, Ve République, Mai 68, présidence, construction européenne, société de consommation, modernisation et mondialisation, jusqu'à l'ère numérique.",
+  source: "https://fr.wikipedia.org/wiki/Jacques_Chirac",
+  start_year: Date.new(1932, 11, 29),
+  end_year: Date.new(2019, 9, 26)
+)
+puts "Era Jacques Chirac created"
+
 # === Comments : liaison Asset ↔ Era par chevauchement d'intervalles ===
 
 # Descriptions spécifiques (<= 200 caractères) de chaque asset dans chaque ère.
@@ -489,6 +509,42 @@ era_comments = {
     "Esclavage" => "L'esclavage est massif dans le monde romain : prisonniers de guerre, dettes, naissance. L'économie méditerranéenne en dépend largement.",
     "Culture du viol" => "Le statut de la femme est subordonné au patriarche. Le consentement n'est pas un concept juridique, le viol est peu réprimé hors adultère.",
     "Pédophilie" => "La minorité sexuelle n'existe pas comme concept juridique. Les mariages précoces sont fréquents et la mortalité infantile très élevée."
+  },
+  "Marie Curie" => {
+    "Lèpre" => "La lèpre a quasiment disparu de France. Les derniers cas sont rarissimes, la maladie relève désormais de l'histoire médicale.",
+    "Démocratie" => "La Troisième République est solidement ancrée. Le suffrage universel masculin est la norme, mais les femmes restent exclues du vote.",
+    "Travail des enfants" => "Le travail des enfants recule grâce aux lois de 1874 et 1892, mais persiste dans l'agriculture et certains ateliers.",
+    "Vaccination" => "La vaccination contre la variole est largement répandue. L'Institut Pasteur, fondé en 1888, développe le vaccin contre la rage.",
+    "École gratuite et laïque" => "Les lois Ferry (1882) rendent l'école gratuite, laïque et obligatoire. L'alphabétisation progresse rapidement du vivant de Marie Curie.",
+    "Liberté de la presse" => "La liberté de la presse (1881) est solidement établie. La presse écrite connaît son âge d'or avec l'affaire Dreyfus.",
+    "Royauté" => "La monarchie a définitivement disparu. La Troisième République est le régime en vigueur, sans prétendant sérieux au trône.",
+    "Culture du viol" => "Le Code civil maintient la femme sous l'autorité du mari. Marie Curie, pionnière, lutte pour sa place dans la science dominée par les hommes.",
+    "Pédophilie" => "La protection des mineurs progresse timidement. La pédocriminalité reste largement ignorée et taboue à cette époque."
+  },
+  "Jacques Chirac" => {
+    "Eau courante" => "L'eau courante est généralisée dans la quasi-totalité des foyers français dès les années 1960-1970, puis universelle.",
+    "Électricité domestique" => "L'électricité est universelle en France pendant toute la vie de Chirac. Aucun foyer n'en est privé.",
+    "Internet" => "Internet se démocratise à la fin des années 1990. En 2019, la quasi-totalité des foyers français y ont accès.",
+    "Antibiotiques" => "Les antibiotiques sont massivement utilisés. La pénicilline et ses dérivés sont devenus monnaie courante depuis l'après-guerre.",
+    "Lèpre" => "La lèpre n'est plus présente en France métropolitaine. Elle relève de l'histoire, traitée efficacement par les antibiotiques.",
+    "Voiture" => "La voiture s'est généralisée : plus de 80% des ménages en possèdent une à la fin du XXe siècle. La société est devenue automobile.",
+    "Salle de bain" => "La salle de bain est devenue un standard universel dans les logements neufs comme anciens dès les années 1980.",
+    "Démocratie" => "La démocratie est solidement établie sous la Ve République. Le suffrage universel direct élit le président depuis 1962.",
+    "Vote des femmes" => "Les femmes votent depuis 1944. La parité politique progresse, mais reste inégale au temps de la présidence Chirac.",
+    "Sécurité sociale" => "La Sécurité sociale couvre l'ensemble de la population. Le système de santé français est l'un des plus performants au monde.",
+    "SMIC" => "Le SMIC, créé en 1970 sous Pompidou avec Chirac comme ministre, garantit un salaire minimum indexé sur l'inflation.",
+    "Congés payés" => "Les congés payés sont passés à 5 semaines en 1969. Les Français disposent d'un temps libre généreux toute la vie de Chirac.",
+    "Vaccination" => "La vaccination est massive et systématique. La variole est éradiquée (1980), le vaccin contre la polio est universel.",
+    "École gratuite et laïque" => "L'école gratuite, laïque et obligatoire est le socle républicain. Le collège unique est en place depuis 1975.",
+    "Liberté de la presse" => "La liberté de la presse est constitutionnellement garantie. La presse écrite décline face à la radio, la télévision et Internet.",
+    "Culture du viol" => "La culture du viol commence à être dénoncée. Les lois sur le harcèlement sexuel (1992) et le viol conjugal (1992) progressent.",
+    "Pédophilie" => "La pédocriminalité sort de l'ombre dans les années 1990-2000. Les lois se durcissent et la parole des victimes émerge.",
+    "Jeu vidéo" => "Le jeu vidéo devient un loisir majeur. Des consoles comme la PlayStation marquent la génération de Chirac.",
+    "Réseaux sociaux" => "Les réseaux sociaux explosent à la fin des années 2000. Facebook, Twitter et YouTube transforment la communication.",
+    "Chauffage domestique" => "Le chauffage central est universel dans les logements. Le confort thermique est devenu une norme de base.",
+    "Viande" => "La viande est accessible au quotidien pour tous. La consommation atteint son sommet avant de stagner à partir des années 2000.",
+    "Réfrigérateur" => "Le réfrigérateur est universel dans les foyers français. La chaîne du froid garantit une conservation sûre des aliments.",
+    "Chimiothérapie" => "La chimiothérapie s'est généralisée et perfectionnée. Les taux de survie au cancer s'améliorent nettement."
   }
 }
 
