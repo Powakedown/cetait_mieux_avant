@@ -99,6 +99,41 @@ Fait en sorte que le timeline soit plus compact sur mobile.
   - Dans la seed, relier les Assets et les Era par un Comment en fonction des dates : l'asset doit un interval (start_year-end_year) qui match avec l'interval de l'era
   - Dans chaque Comment, sers toi de éventuellement de pour Napoléon de skils/history/references/napoleon.md pour compléter les descriptions sinon sers toi de tes connaissances pour ajouter une petite description (max 200 caractère) concernant cet asset à l'époque en question.
 
+# 11 - Récapitulatif d'éra
+
+  - entre l'accordéon et le graphique, dispose une série de bouton, lié chacun à une Era.
+  - quand on clique sur le bouton, une modale moyenne s'ouvre. On y retrouve :
+    - en titre la "question" de l'era.
+    - la description succinte de l'era
+    - un rappel des dates de début et de fin
+    - une série de tag au contour vert, écrit en vert pour chaque asset lié à cet Era.
+    - une série de tag au contour rouge, écrit en rouge pour chaque asset non lié à cet Era.
+    - au survol des tags liés à l'era (lié par un Comment), affiché un tooltip dans lequel on retrouve la :description du Comment de jonction.
+  - la modale doit disposer d'une croix en haut à droite pour fermer
+  - la modale se ferme si on clique en dehors
+
+# 12 - Improvements
+
+  - Compléter les notions dans la partie Architecture dans le plan.md
+  - Améliorer les boutons des Era :
+    - générer une petite image pour chaque bouton, principalement des petits portrait en fonction des noms de l'Era(placer l'image de bouton dans les assets/images/era/buttons, nommer l'image en fonction du nom de l'era)
+    - générer une image plus grande (environ 600px) qui symbolise bien l'era en question (placer l'image dans les assets/images/era/hero)
+    - ajouter les petits portrait à gauche du bouton, ils doivent être un peu plus gros, environ 50px. Le lien entre l'era du bouton et l'image est faite par le nom de l'era qui est cohérent avec le nom du fichier.
+    - dans chaque modal, utiliser l'image hero toute hauteur à gauche, afin d'illustrer la modale. Les src de l'image est se trouve par le nom de l'era.
+  - Fixer les tooltips qui se retrouve coupé par le bord de la modale au survol.
+
+# Fin
+
+# Architecture
+
+## Stack
+
+- **Ruby on Rails 7.1.x** (Ruby 3.4.6), PostgreSQL
+- **Hotwire** : Turbo + Stimulus (importmap, pas de bundler JS)
+- **ViewComponent** pour les composants de vue réutilisables
+- **Tailwind CSS** via `tailwindcss-rails` (compilé dans `app/assets/builds/tailwind.css`)
+- **Haml** pour les layouts (`application.html.haml`), ERB pour les vues
+- **RSpec** + FactoryBot + Shoulda-matchers pour les tests
 
 
 # Ajout de boutons de récap : "vivre à l'époque de Napoléon" => vous aurez l'honneur de profiter de :

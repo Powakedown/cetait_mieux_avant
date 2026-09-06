@@ -20,6 +20,54 @@
     </div>
   </div>
 
+  <div class="era-buttons" data-controller="era-modal">
+    <% @eras.each do |era| %>
+      <% slug = era.name.parameterize %>
+      <button class="era-button" data-action="click->era-modal#open" data-era-modal-id-param="<%= era.id %>">
+        <%= image_tag asset_path("era/buttons/#{slug}.png"), alt: era.name, class: "era-button-portrait", width: 50, height: 50 %>
+        <span class="era-button-text"><%= era.question %></span>
+      </button>
+    <% end %>
+
+    <% @eras.each do |era| %>
+      <% linked_asset_ids = era.comments.map(&:asset_id) %>
+      <% slug = era.name.parameterize %>
+      <div class="era-modal-overlay" data-era-modal-target="overlay" data-era-modal-id="<%= era.id %>" data-action="click->era-modal#closeBackground">
+        <div class="era-modal" data-action="click->era-modal#stopPropagation">
+          <button class="era-modal-close" data-action="click->era-modal#close" aria-label="Fermer">&times;</button>
+          <div class="era-modal-content">
+            <%= image_tag asset_path("era/hero/#{slug}.png"), alt: era.name, class: "era-modal-hero" %>
+            <div class="era-modal-body">
+              <div class="era-modal-scroll">
+                <h2 class="era-modal-title"><%= era.question %></h2>
+                <% if era.description.present? %>
+                  <p class="era-modal-description"><%= era.description %></p>
+                <% end %>
+                <p class="era-modal-dates">
+                  <%= era.start_year.year %> &mdash; <%= era.end_year.year %>
+                </p>
+              </div>
+              <div class="era-modal-tags">
+                <% @assets.each do |asset| %>
+                  <% if linked_asset_ids.include?(asset.id) %>
+                    <% comment = era.comments.find { |c| c.asset_id == asset.id } %>
+                    <span class="era-tag era-tag-linked" data-tooltip="<%= comment.description %>">
+                      <%= asset.name %>
+                    </span>
+                  <% else %>
+                    <span class="era-tag era-tag-unlinked">
+                      <%= asset.name %>
+                    </span>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
   <div class="timeline-container">
     <div class="timeline-scroll">
       <div style="min-width: max-content;">

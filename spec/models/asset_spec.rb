@@ -41,7 +41,7 @@ RSpec.describe Asset, type: :model do
   describe 'enum' do
     it 'defines type enum with progress, era and phenomenom' do
       expect(Asset.types).to eq(
-        "progress" => "progress", "era" => "era", "phenomenom" => "phenomenom"
+        "progress" => "progress", "phenomenom" => "phenomenom"
       )
     end
 

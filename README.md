@@ -28,63 +28,73 @@ bundle exec rspec
 
 ## Plan / Feuille de route
 
-Le détail du plan vit dans [`plan.md`](./plan.md). Ne pas répéter le plan ici.
+Le détail du plan vit dans [`plan.md`](./plan.md).
+Ne pas répéter le plan ici.
 
-### 1. Feature principale : frise chronologique
 
-1. Située sur `home > index.html.haml`
-2. Itère sur `@assets` par ordre croissant (`:order`), de haut en bas
-3. Graphique en barres : chaque barre est un asset sur l'ordonnée ; l'abscisse porte les années (start_year → end_year)
-4. Années affichées en haut, divisées en décennies, de la plus récente à gauche à la plus ancienne à droite ; taille fixe par décennie ; frise jusqu'à l'an 0 (scroll horizontal nécessaire) ; overflow scroll sur x
-5. Les barres sont calées sur la frise (scroll permet de consulter l'année de départ)
-6. Hauteur des barres suffisante pour inclure du texte
-7. Couleur de fond = `asset.color`
-8. Les noms des avancées sont sur l'ordonnée et restent fixes au scroll
-9. Rendu graphique et moderne
+## Modèles (ActiveRecord)
 
-### 2. Mise à jour du graphique
+```
+Asset ──< Comment >── Era
+```
 
-1. Couleurs des assets via le thème (`#048A81 #06D6A0 #54C6EB #8A89C0 #CDA2AB`), avec validation d'inclusion dans le modèle
-2. `#CDA2AB` (marron) réservé aux « mauvaises choses » (esclavage, lèpre…)
-3. Commentaire de l'asset affiché dans la barre, en gris foncé
-4. Le graphique peut être près du bord gauche, même sur grand écran
-5. Réduction de la hauteur des barres (padding top/bottom)
+- **Asset** : avancée ou phénomène. Colonnes : `name`, `comment`, `source`,
+  `start_year` (string), `end_year` (string, `nil` = toujours d'actualité),
+  `order` (tri vertical), `color` (hex thème, validé par inclusion),
+  `public`, `validation`, `type` (enum : `progress` / `phenomenom`).
+  `self.inheritance_column = nil` pour réutiliser la colonne `type` comme enum.
+- **Era** : époque historique. Colonnes : `name`, `description`, `source`,
+  `question`, `start_year` (date), `end_year` (date).
+- **Comment** : jonction Asset ↔ Era avec une `description` contextuelle
+  (ce que cet asset représente dans cette ère). Contrainte d'unicité
+  `(asset_id, era_id)`.
 
-### 3. Refactor de la vue
+Les années sont stockées en string côté Asset (pour gérer les valeurs
+négatives comme `-2000` et les `nil`) et en date côté Era.
 
-1. Extraire le calcul de position/taille des barres dans une classe répondant à `.left_pos` et `.bar_width`
-2. Ajouter des specs pour cette classe
-3. Extraire le dimensionnement global du graphique dans une classe dédiée au styling/sizing
+## Classes de présentation (plain Ruby, hors ActiveRecord)
 
-### 4. Thème
+- **TimelineGraphic** : calcule le dimensionnement global de la frise.
+  `MAX_DECADE` = décennie courante arrondie au-dessus.Expose `decades_count`,
+  `min_width`, `asset_bars`.
+- **AssetBar** : wrap un Asset et calcule le positionnement en pixels de sa
+  barre (`left_pos`, `bar_width`) à partir de `start_year`/`end_year`,
+  via `PIXELS_PER_DECADE = 120`.
 
-Rendre la page futuriste, compacte, type « page de statistiques » : style, page, titre principal.
+## Contrôleur et routing
 
-### 5. UX — marqueur de scroll
+- `config/routes.rb` : route unique `root "home#index"`.
+- **HomeController#index** : expose `@assets` (triés par `:order`) et `@eras`
+  (avec eager-load `comments + assets` pour éviter les N+1 dans la modale).
 
-Petit triangle sur le `timeline-bars-container` pour les `timeline-bar` dont la position dépasse l'écran. Le triangle scrolle automatiquement vers le début de la barre, centrée horizontalement.
+## Vue `home/index.html.erb`
 
-### 6. Responsive
+```
+HomeController#index
+  → @assets, @eras
+  → TimelineGraphic.new → .decades_count, .max_decade, .asset_bars, .min_width
+      → AssetBar.new(asset) → .left_pos, .bar_width, .asset
+  → Boutons d'Era + modales (Stimulus era-modal)
+  → Frise chronologique scrollable (Stimulus timeline, scroll markers)
+  → Accordéon mobile (Stimulus accordion)
+```
 
-Timeline plus compacte sur mobile :
-- padding réduits
-- décennies moins larges
-- texte d'explication sous le titre repliable derrière un accordéon + bouton « en savoir plus » (mobile uniquement)
-- nom des assets en colonne ≈ un tiers de l'écran
+## Stimulus controllers (`app/javascript/controllers/`)
 
-### 7. Commentaires sur les assets
+- **timeline** : marqueurs de scroll (triangles) pour les barres hors-champ,
+  scroll automatique au clic vers le début de la barre centré.
+- **era-modal** : ouverture/fermeture des modales d'Era (clic bouton, croix,
+  clic en dehors).
+- **accordion** : dépliage du texte explicatif en mobile.
 
-- Modèle `Era` (`name`, `description`, `source`, `question` en string)
-- Modèle `Comment` : jonction entre 1 `Asset` et 1 `Era`, avec `description`
-- Foreign keys et index (index unique sur `[asset_id, era_id]`)
-- Relations Active Record entre les modèles
-- Colonne `type` sur `Asset` (enum : `progress`, `era`, `phenomenom`)
-- Seeds : avancées humaines → `progress`, les autres → `phenomenom`
+## Assets et images
 
-### 8. Mise à jour du README
+- Feuille de style principale : `app/assets/stylesheets/application.css`
+  (thème futuriste : fond sombre, accents cyan/teal, police monospace).
+- Images d'Era : `app/assets/images/era/buttons/` (portraits ~50px) et
+  `app/assets/images/era/hero/` (illustrations ~600px). Le lien Era → image
+  se fait par `era.name.parameterize` (ex. "Napoléon" → `napoleon`).
 
-- Mettre à jour `README.md` avec le plan
-- Symlink `AGENTS.md` pointant vers le README
 
 ## Pistes futures
 
