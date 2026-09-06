@@ -124,11 +124,20 @@ Fait en sorte que le timeline soit plus compact sur mobile.
 
 # 13 - Jonction aux marges
 
-- ajouter une colonne de type boolean :coming sur le modèle Comment
-- faire la migration
-- mettre à jour dans la seed, les jonctions en Asset et Era selon leur chevauchement de date (réf étapte 10) MAIS attention car les Era qui se termine dans 10 ans après l'apparition d'un asset doit taguer la jonction "comment" comme coming: true. Example: si un Era se termine en 1970, alors un asset qui apparait en 1960 par exemple doit voir sa jonction `coming: true`
-- ajouter une description pertinente si elle n'existe pas encore
-- dans les modals de l'index, les tags pour les comments.coming == true doivent avoir un contour orange avec un texte orange et également un tooltip fonction de sa description
+  - ajouter une colonne de type boolean :coming sur le modèle Comment
+  - faire la migration
+  - mettre à jour dans la seed, les jonctions en Asset et Era selon leur chevauchement de date (réf étapte 10) MAIS attention car les Era qui se termine dans 10 ans après l'apparition d'un asset doit taguer la jonction "comment" comme coming: true. Example: si un Era se termine en 1970, alors un asset qui apparait en 1960 par exemple doit voir sa jonction `coming: true`
+  - ajouter une description pertinente si elle n'existe pas encore
+  - dans les modals de l'index, les tags pour les comments.coming == true doivent avoir un contour orange avec un texte orange et également un tooltip fonction de sa description
+
+# 14 - Amélioration de la modale
+
+  - ajout d'une légende en bas de la modal : un carré de couleur et un texte pour expliquer chaque couleur. Signification:
+    - un carré vert : existe
+    - un carré orange : en développement
+    - un carré rouge : n'existe pas
+  - l'image sur la gauche de la modal doit un élément rempli d'un background image afin que l'image puisse prendre toute la hauteur de la modal
+
 
 # Fin
 

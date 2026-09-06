@@ -11,6 +11,13 @@ module ApplicationHelper
     end
   end
 
+  # Retourne le chemin de l'asset hero pour un background-image CSS,
+  # ou nil si l'asset n'existe pas.
+  def era_hero_path(slug)
+    path = "era/hero/#{slug}.png"
+    era_asset_exists?(path) ? asset_path(path) : nil
+  end
+
   private
 
   def era_asset_exists?(path)

@@ -36,7 +36,10 @@
         <div class="era-modal" data-action="click->era-modal#stopPropagation">
           <button class="era-modal-close" data-action="click->era-modal#close" aria-label="Fermer">&times;</button>
           <div class="era-modal-content">
-            <%= era_image_tag(slug, "hero", alt: era.name, classes: "era-modal-hero") %>
+            <% hero_path = era_hero_path(slug) %>
+            <%= tag.div class: class_names("era-modal-hero", "era-image-placeholder" => !hero_path),
+                  style: "background-image: url('#{image_path(hero_path)}');" do %>
+            <% end %>
             <div class="era-modal-body">
               <div class="era-modal-scroll">
                 <h2 class="era-modal-title"><%= era.question %></h2>
@@ -60,6 +63,11 @@
                     </span>
                   <% end %>
                 <% end %>
+              </div>
+              <div class="era-modal-legend">
+                <span class="era-legend-item"><span class="era-legend-swatch era-legend-exists"></span> Existe</span>
+                <span class="era-legend-item"><span class="era-legend-swatch era-legend-coming"></span> En développement</span>
+                <span class="era-legend-item"><span class="era-legend-swatch era-legend-none"></span> N'existe pas</span>
               </div>
             </div>
           </div>
