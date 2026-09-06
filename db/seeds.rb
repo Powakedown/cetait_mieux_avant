@@ -442,6 +442,16 @@ era_comments = {
 def asset_start_int(asset) = asset.start_year.to_i
 def asset_end_int(asset)   = asset.end_year.nil? ? Float::INFINITY : asset.end_year.to_i
 
+# Description générique de secours (<= 200 caractères) quand aucune description
+# spécifique n'est définie dans era_comments.
+def fallback_description(asset, coming)
+  if asset.progress?
+    coming ? "#{asset.name} fait son apparition à la toute fin de cette période." : "#{asset.name} est déjà présent à cette époque."
+  else
+    coming ? "#{asset.name} commence à disparaître à la fin de cette période." : "#{asset.name} sévit encore à cette époque."
+  end
+end
+
 Era.all.each do |era|
   era_start  = era.start_year.year
   era_end    = era.end_year.year
@@ -453,11 +463,14 @@ Era.all.each do |era|
     # chevauchement d'intervalles [a_start, a_end] ∩ [era_start, era_end]
     next unless a_start <= era_end && a_end >= era_start
 
-    description = asset_desc[asset.name]
-    next if description.nil?
+    # coming: l'asset apparaît dans les 10 dernières années de l'era
+    coming = a_start >= (era_end - 10) && a_start <= era_end
+
+    description = asset_desc[asset.name] || fallback_description(asset, coming)
 
     comment = Comment.find_or_initialize_by(asset: asset, era: era)
     comment.description = description
+    comment.coming = coming
     comment.save!
   end
 end

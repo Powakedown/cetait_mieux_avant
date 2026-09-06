@@ -122,6 +122,14 @@ Fait en sorte que le timeline soit plus compact sur mobile.
     - dans chaque modal, utiliser l'image hero toute hauteur à gauche, afin d'illustrer la modale. Les src de l'image est se trouve par le nom de l'era.
   - Fixer les tooltips qui se retrouve coupé par le bord de la modale au survol.
 
+# 13 - Jonction aux marges
+
+- ajouter une colonne de type boolean :coming sur le modèle Comment
+- faire la migration
+- mettre à jour dans la seed, les jonctions en Asset et Era selon leur chevauchement de date (réf étapte 10) MAIS attention car les Era qui se termine dans 10 ans après l'apparition d'un asset doit taguer la jonction "comment" comme coming: true. Example: si un Era se termine en 1970, alors un asset qui apparait en 1960 par exemple doit voir sa jonction `coming: true`
+- ajouter une description pertinente si elle n'existe pas encore
+- dans les modals de l'index, les tags pour les comments.coming == true doivent avoir un contour orange avec un texte orange et également un tooltip fonction de sa description
+
 # Fin
 
 # Architecture
