@@ -138,22 +138,24 @@ Fait en sorte que le timeline soit plus compact sur mobile.
     - un carré rouge : n'existe pas
   - l'image sur la gauche de la modal doit un élément rempli d'un background image afin que l'image puisse prendre toute la hauteur de la modal
 
+# 15 - Mise à jour diverses
+
+  - mettre à jour les tags dans la modal : si l'asset du tag en question est de type "phenomenom" ou "curse", il doit avoir le bordure et le texte marron
+  - le marron doit être ajouté à la légende verte labellisé "existe"
+  - la lèpre ne doit pas être connecté a l'era "charles de gaulle"
+  - la démocratie ne doit pas être connecté à l'era "napoléon"
+  - les boutons doivent être ordonné par date de début
+  - un petit tag en bas à droite de l'image de la modal, mais au dessus de l'image doit préciser "IA"
+  - ne pas lister dans le graphique les asset de type "curse"
+  - créer une Era pour l'époque de Jésus Christ dans la seed et le connecter aux assets (mais ça doit être déjà fait dans la seed)
+
+# 16 - Ajour d'Era
+
+  - Créer les era Marie Curie, Jacques Chirac dans la seed
 
 # Fin
 
-# Architecture
 
-## Stack
-
-- **Ruby on Rails 7.1.x** (Ruby 3.4.6), PostgreSQL
-- **Hotwire** : Turbo + Stimulus (importmap, pas de bundler JS)
-- **ViewComponent** pour les composants de vue réutilisables
-- **Tailwind CSS** via `tailwindcss-rails` (compilé dans `app/assets/builds/tailwind.css`)
-- **Haml** pour les layouts (`application.html.haml`), ERB pour les vues
-- **RSpec** + FactoryBot + Shoulda-matchers pour les tests
-
-
-# Ajout de boutons de récap : "vivre à l'époque de Napoléon" => vous aurez l'honneur de profiter de :
 # Ajout d'un lien vers la source
 # Publication sur les réseaux sociaux au travers de l'IA
 # Développer un serveur MCP afin de pouvoir ajouter un asset directement par IA

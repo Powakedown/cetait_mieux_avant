@@ -320,6 +320,42 @@ Asset.find_or_create_by!(
   type: "progress"
 )
 
+Asset.find_or_create_by!(
+  name: "Esclavage généralisé",
+  comment: "Environ 30% de la population de l'Empire romain était réduite en esclavage. Les esclaves n'avaient aucun droit et étaient considérés comme des biens.",
+  source: "https://fr.wikipedia.org/wiki/Esclavage_dans_la_Rome_antique",
+  start_year: "-2000", # Début symbolique pour une disparition
+  end_year: "100",    # Fin symbolique (Ier siècle ap. J.-C.)
+  public: true,
+  color: "#CDA2AB",
+  type: "curse",
+  order: 30
+)
+
+Asset.find_or_create_by!(
+  name: "Très faible espérance de vie",
+  comment: "Espérance de vie moyenne de 25–35 ans à l'époque de Jésus-Christ, avec une mortalité infantile élevée (30–50% avant 5 ans).",
+  source: "https://fr.wikipedia.org/wiki/Esp%C3%A9rance_de_vie_dans_l%27Antiquit%C3%A9",
+  start_year: "-2000",
+  end_year: "100",
+  public: true,
+  color: "#CDA2AB",
+  type: "curse",
+  order: 31
+)
+
+Asset.find_or_create_by!(
+  name: "Hygiène inexistante",
+  comment: "Absence totale d'hygiène moderne : pas d'eau courante, pas de salle de bain, toilettes rudimentaires (latrines communes). Les rues étaient sales, avec des déchets jetés dans les caniveaux. Les bains publics (thermes) existaient mais étaient réservés aux élites.",
+  source: "https://fr.wikipedia.org/wiki/Hygi%C3%A8ne_dans_la_Rome_antique",
+  start_year: "-2000",
+  end_year: "100",
+  public: true,
+  color: "#CDA2AB",
+  type: "curse",
+  order: 35
+)
+
 # === Eras ===
 
 Era.find_or_create_by!(
@@ -371,6 +407,16 @@ Era.find_or_create_by!(
   end_year: Date.new(1453, 7, 21)
 )
 puts "Era Moyen Âge created"
+
+Era.find_or_create_by!(
+  name: "Jésus Christ",
+  question: "Vivre du temps de Jésus Christ ?",
+  description: "La Judée du Ier siècle sous occupation romaine : province turbulente, messies et prédicateurs, tensions religieuses et attentes eschatologiques, au carrefour du monde méditerranéen.",
+  source: "https://fr.wikipedia.org/wiki/J%C3%A9sus_de_Nazareth",
+  start_year: Date.new(-4, 1, 1),
+  end_year: Date.new(33, 1, 1)
+)
+puts "Era Jésus Christ created"
 
 # === Comments : liaison Asset ↔ Era par chevauchement d'intervalles ===
 
@@ -435,8 +481,22 @@ era_comments = {
     "Esclavage" => "L'esclavage existe encore au début du Moyen Âge, mais décline avec la féodalité au profit du servage, qui le remplace graduellement.",
     "Culture du viol" => "Le droit médiéval soumet la femme au père puis au mari. Le consentement n'est pas un concept juridique, le viol est peu réprimé.",
     "Pédophilie" => "La pédocriminalité n'est pas identifiée. Les mariages précoces et la mortalité infantile élevée caractérisent cette société rude."
+  },
+  "Jésus Christ" => {
+    "Royauté" => "Hérode le Grand, roi vassal de Rome, règne sur la Judée. La souveraineté est indirecte, sous tutelle impériale romaine.",
+    "Lèpre" => "La lèpre sévit dans le bassin méditerranéen. Malades isolés et marginaux, ils sont considérés comme impurs et exclus de la communauté.",
+    "Travail des enfants" => "Le travail des enfants est la norme : aux champs, à l'atelier, à la maison. Dès le plus jeune âge, ils participent à l'économie familiale.",
+    "Esclavage" => "L'esclavage est massif dans le monde romain : prisonniers de guerre, dettes, naissance. L'économie méditerranéenne en dépend largement.",
+    "Culture du viol" => "Le statut de la femme est subordonné au patriarche. Le consentement n'est pas un concept juridique, le viol est peu réprimé hors adultère.",
+    "Pédophilie" => "La minorité sexuelle n'existe pas comme concept juridique. Les mariages précoces sont fréquents et la mortalité infantile très élevée."
   }
 }
+
+# Paires Asset ↔ Era à exclure explicitement malgré le chevauchement de dates.
+excluded_comments = [
+  ["Lèpre", "De Gaulle"],
+  ["Démocratie", "Napoléon"]
+]
 
 # Conversion d'une année d'asset (string/int/nil) en entier ; nil = +infini.
 def asset_start_int(asset) = asset.start_year.to_i
@@ -463,6 +523,9 @@ Era.all.each do |era|
     # chevauchement d'intervalles [a_start, a_end] ∩ [era_start, era_end]
     next unless a_start <= era_end && a_end >= era_start
 
+    # exclusion explicite de certaines paires (cf. excluded_comments)
+    next if excluded_comments.any? { |a, e| a == asset.name && e == era.name }
+
     # coming: l'asset apparaît dans les 10 dernières années de l'era
     coming = a_start >= (era_end - 10) && a_start <= era_end
 
@@ -474,16 +537,21 @@ Era.all.each do |era|
     comment.save!
   end
 end
+
+# Détruit les jonctions explicitement exclues (au cas où elles auraient été créées avant).
+excluded_comments.each do |asset_name, era_name|
+  Comment.joins(:asset, :era).where(assets: { name: asset_name }, eras: { name: era_name }).destroy_all
+end
 puts "Comments created linking Assets and Eras"
 
 # Asset
-# revoir Liberté de la presse en timeline
 # lave linge
 # produit phytosanitaire
 # plastique
 # station d'épuration
 #
 # Timeline :
+# revoir Liberté de la presse en timeline
 # cause première de mort
 # guerres
 # congé payés
@@ -492,7 +560,7 @@ puts "Comments created linking Assets and Eras"
 # Nombre d'heure de travail journalier
 # Liberté d'expression
 # Famine
-#
+# Peste
 #
 # Santé
 # Alimentation

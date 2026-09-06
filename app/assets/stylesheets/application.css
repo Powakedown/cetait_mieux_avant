@@ -549,6 +549,7 @@ p {
 .era-modal-hero {
   width: 200px;
   flex-shrink: 0;
+  position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -655,6 +656,11 @@ p {
   border: 1px solid #f87171;
 }
 
+.era-legend-curse {
+  background: #CDA2AB;
+  border: 1px solid #CDA2AB;
+}
+
 .era-tag {
   display: inline-flex;
   align-items: center;
@@ -679,15 +685,22 @@ p {
   background: rgba(248, 113, 113, 0.08);
 }
 
+.era-tag-curse {
+  color: #CDA2AB;
+  border-color: #CDA2AB;
+  background: rgba(205, 162, 171, 0.08);
+}
+
 .era-tag-coming {
   color: #f59e0b;
   border-color: #f59e0b;
   background: rgba(245, 158, 11, 0.08);
 }
 
-/* Tooltip on linked and coming tags */
+/* Tooltip on linked, coming and curse tags */
 .era-tag-linked[data-tooltip]::after,
-.era-tag-coming[data-tooltip]::after {
+.era-tag-coming[data-tooltip]::after,
+.era-tag-curse[data-tooltip]::after {
   content: attr(data-tooltip);
   position: absolute;
   bottom: calc(100% + 8px);
@@ -712,7 +725,8 @@ p {
 }
 
 .era-tag-linked[data-tooltip]:hover::after,
-.era-tag-coming[data-tooltip]:hover::after {
+.era-tag-coming[data-tooltip]:hover::after,
+.era-tag-curse[data-tooltip]:hover::after {
   opacity: 1;
 }
 
@@ -722,6 +736,27 @@ p {
 
 .era-tag-coming[data-tooltip]:hover {
   background: rgba(245, 158, 11, 0.18);
+}
+
+.era-tag-curse[data-tooltip]:hover {
+  background: rgba(205, 162, 171, 0.18);
+}
+
+/* IA badge on hero image */
+.era-hero-ia-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #22d3ee;
+  font-size: 0.6rem;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  z-index: 5;
 }
 
 @media (max-width: 768px) {

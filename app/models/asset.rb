@@ -26,7 +26,8 @@ class Asset < ApplicationRecord
 
   enum type: {
     progress: "progress",
-    phenomenom: "phenomenom"
+    phenomenom: "phenomenom",
+    curse: "curse"
   }
 
   has_many :comments, dependent: :destroy
