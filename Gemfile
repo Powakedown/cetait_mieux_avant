@@ -26,8 +26,6 @@ gem "jbuilder"
 
 # UI
 gem "view_component"
-gem "tailwindcss-rails"
-gem "haml-rails"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

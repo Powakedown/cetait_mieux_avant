@@ -9,6 +9,12 @@ export default class extends Controller {
     if (overlay) overlay.classList.add("era-modal-overlay--open")
   }
 
+  navigate(event) {
+    const currentOverlay = event.target.closest(".era-modal-overlay")
+    if (currentOverlay) currentOverlay.classList.remove("era-modal-overlay--open")
+    this.open(event)
+  }
+
   close(event) {
     const overlay = event.target.closest(".era-modal-overlay")
     if (overlay) overlay.classList.remove("era-modal-overlay--open")

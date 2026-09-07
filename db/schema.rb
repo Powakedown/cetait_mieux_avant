@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_09_06_164325) do
+ActiveRecord::Schema[7.1].define(version: 2026_09_07_063849) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,13 @@ ActiveRecord::Schema[7.1].define(version: 2026_09_06_164325) do
     t.index ["type"], name: "index_assets_on_type"
   end
 
+  create_table "bonuses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_bonuses_on_name", unique: true
+  end
+
   create_table "comments", force: :cascade do |t|
     t.bigint "asset_id", null: false
     t.bigint "era_id", null: false
@@ -40,6 +47,17 @@ ActiveRecord::Schema[7.1].define(version: 2026_09_06_164325) do
     t.index ["asset_id", "era_id"], name: "index_comments_on_asset_id_and_era_id", unique: true
     t.index ["asset_id"], name: "index_comments_on_asset_id"
     t.index ["era_id"], name: "index_comments_on_era_id"
+  end
+
+  create_table "era_bonuses", force: :cascade do |t|
+    t.bigint "era_id", null: false
+    t.bigint "bonus_id", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bonus_id"], name: "index_era_bonuses_on_bonus_id"
+    t.index ["era_id", "bonus_id"], name: "index_era_bonuses_on_era_id_and_bonus_id", unique: true
+    t.index ["era_id"], name: "index_era_bonuses_on_era_id"
   end
 
   create_table "eras", force: :cascade do |t|
@@ -55,4 +73,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_09_06_164325) do
 
   add_foreign_key "comments", "assets"
   add_foreign_key "comments", "eras"
+  add_foreign_key "era_bonuses", "bonuses", column: "bonus_id"
+  add_foreign_key "era_bonuses", "eras"
 end

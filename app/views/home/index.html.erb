@@ -35,6 +35,13 @@
       <div class="era-modal-overlay" data-era-modal-target="overlay" data-era-modal-id="<%= era.id %>" data-action="click->era-modal#closeBackground">
         <div class="era-modal" data-action="click->era-modal#stopPropagation">
           <button class="era-modal-close" data-action="click->era-modal#close" aria-label="Fermer">&times;</button>
+          <% era_index = @eras.index(era) %>
+          <% if era_index && era_index > 0 %>
+            <button class="era-modal-nav era-modal-nav-prev" data-action="click->era-modal#navigate" data-era-modal-id-param="<%= @eras[era_index - 1].id %>" aria-label="Ère précédente">&lsaquo;</button>
+          <% end %>
+          <% if era_index && era_index < @eras.length - 1 %>
+            <button class="era-modal-nav era-modal-nav-next" data-action="click->era-modal#navigate" data-era-modal-id-param="<%= @eras[era_index + 1].id %>" aria-label="Ère suivante">&rsaquo;</button>
+          <% end %>
           <div class="era-modal-content">
             <% hero_path = era_hero_path(slug) %>
             <%= tag.div class: class_names("era-modal-hero", "era-image-placeholder" => !hero_path),
@@ -46,6 +53,15 @@
                 <h2 class="era-modal-title"><%= era.question %></h2>
                 <% if era.description.present? %>
                   <p class="era-modal-description"><%= era.description %></p>
+                <% end %>
+                <% if era.era_bonuses.any? %>
+                  <div class="era-modal-bonuses">
+                    <% era.era_bonuses.each do |eb| %>
+                      <span class="era-bonus-chip" data-tooltip="<%= eb.description %>">
+                        <%= eb.bonus.name %>
+                      </span>
+                    <% end %>
+                  </div>
                 <% end %>
                 <p class="era-modal-dates">
                   <%= era.start_year.year %> &mdash; <%= era.end_year.year %>
@@ -66,7 +82,8 @@
                       <%= asset.name %>
                     </span>
                   <% else %>
-                    <span class="era-tag era-tag-unlinked">
+                    <% unlinked_class = asset.phenomenom? || asset.curse? ? 'era-tag-unlinked-phenom' : 'era-tag-unlinked' %>
+                    <span class="era-tag <%= unlinked_class %>">
                       <%= asset.name %>
                     </span>
                   <% end %>
@@ -77,6 +94,7 @@
                 <span class="era-legend-item"><span class="era-legend-swatch era-legend-curse"></span> Existe (négatif)</span>
                 <span class="era-legend-item"><span class="era-legend-swatch era-legend-coming"></span> En développement</span>
                 <span class="era-legend-item"><span class="era-legend-swatch era-legend-none"></span> N'existe pas</span>
+                <span class="era-legend-item"><span class="era-legend-swatch era-legend-none-phenom"></span> N'existe pas (négatif)</span>
               </div>
             </div>
           </div>

@@ -149,9 +149,31 @@ Fait en sorte que le timeline soit plus compact sur mobile.
   - ne pas lister dans le graphique les asset de type "curse"
   - créer une Era pour l'époque de Jésus Christ dans la seed et le connecter aux assets (mais ça doit être déjà fait dans la seed)
 
-# 16 - Ajour d'Era
+# 16 - Ajout d'Era
 
   - Créer les era Marie Curie, Jacques Chirac dans la seed
+
+# 17 - Mise à jour de la modale
+
+  - les tags des assets "phenomenom" qui n'existe pas doivent avoir une border et un texte de couleur vert comme les progress, mais le texte doit être barré
+  - on doit pouvoir grâce à des flèches sur le côté de la modale, passer d'une era à une autre
+  - l'asset Royauté doit être renommé "Dictature" (voit si tu dois changer les commentaires dans les jonctions et l'asset lui même)
+  - l'asset travail des enfants ne devrait pas être lié a l'era Charles De Gaulle. La lèpre ne devrait pas être lié à Jacques Chiras
+  - l'era Marie Curie ne devrait pas être lié à l'asset Dictature
+  - relier Jacques Chirac à la pédophilie et la culture du viol
+
+# 18 - Création des fléaux
+
+  - Créer un modèle Bonus, avec un :name
+  - Créer un modèle de jonction entre les Era et les Bonus, avec une :description
+  - Ajouter au seed Les Bonus : Guerre, Peste, Famine, Abondance, Paix
+  - Relier les Bonus aux Era en fonction de leur existence sur le territoire Français métropolitain.
+  - Ajouter un commentaire pertinent à chaque jonction
+  - Migrer
+  - Dans la modale au dessus des légendes, créer un petit encart de la même couleur et taille que les boutons des Era. Dans l'encart, ajouter le nom du bonus et au survol le tooltip avec la description de la jonction Era-Bonus
+  - Délier Guerre et Jacques Chirac
+  - Le tootip des bonus ne doit pas passe en dessous des images hero
+  - Délier Napoléon de Famine
 
 # Fin
 

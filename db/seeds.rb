@@ -1,3 +1,10 @@
+# Renommage de l'asset "Royauté" en "Dictature" (étape 17).
+# Doit s'exécuter avant find_or_create_by! pour éviter un doublon.
+if Asset.where(name: "Royauté").exists?
+  Asset.where(name: "Royauté").update_all(name: "Dictature",
+    comment: "Disparition des régimes autoritaires en France avec la proclamation de la Troisième République.")
+end
+
 Asset.find_or_create_by!(
   name: "Eau courante",
   comment: "Eau potable au robinet en France disponible couramment dans les foyers, environ 80% des foyers en 1950.",
@@ -207,10 +214,10 @@ Asset.find_or_create_by!(
   type: "progress"
 )
 
-# Royauté (disparition en 1870 : fin de la monarchie en France avec la Troisième République)
+# Dictature / Royauté (disparition en 1870 : fin de la monarchie en France avec la Troisième République)
 Asset.find_or_create_by!(
-  name: "Royauté",
-  comment: "Disparition de la monarchie en France avec la proclamation de la Troisième République.",
+  name: "Dictature",
+  comment: "Disparition des régimes autoritaires en France avec la proclamation de la Troisième République.",
   source: "https://fr.wikipedia.org/wiki/Troisi%C3%A8me_R%C3%A9publique_(France)",
   start_year: "-2000",
   end_year: "1870",
@@ -446,7 +453,7 @@ era_comments = {
     "Travail des enfants" => "Le travail des enfants est monnaie courante dans les ateliers et campagnes, sans protection légale. L'industrialisation naissante en exploite la main-d'œuvre.",
     "Esclavage" => "Napoléon rétablit l'esclavage en 1802 dans les colonies, annulant l'abolition de 1794. Des milliers de personnes sont à nouveau réduites en esclavage.",
     "Vaccination" => "Début de la vaccination contre la variole se diffuse après la découverte de Jenner (1798). Napoléon la favorise, notamment dans l'armée.",
-    "Royauté" => "Napoléon rétablit un régime monarchique en se proclamant Empereur en 1804, recréant cour et pouvoir héréditaire sur les ruines de la Révolution.",
+    "Dictature" => "Napoléon rétablit un régime autoritaire en se proclamant Empereur en 1804, concentrant tous les pouvoirs entre ses mains sur les ruines de la Révolution.",
     "Lèpre" => "La lèpre a largement disparu de France à cette époque, confinée à quelques rares foyers. Elle n'est plus un problème de santé publique majeur.",
     "Culture du viol" => "Les femmes sont soumises à l'autorité maritale. Le viol conjugal n'est pas reconnu, le consentement est absent du Code civil de 1804.",
     "Pédophilie" => "La pédocriminalité n'est pas identifiée comme telle. La minorité est peu protégée par la loi, le sujet reste tabou et invisible."
@@ -456,7 +463,7 @@ era_comments = {
     "Travail des enfants" => "Le travail des enfants reste massif en usine. La loi de 1841 fixe un âge minimum, mais son application est faible. La loi de 1874 renforce les protections.",
     "Esclavage" => "L'esclavage est aboli définitivement en 1848 sous la Seconde République, grâce à Victor Schoelcher. Les colonies françaises sont libérées.",
     "Vaccination" => "La vaccination contre la variole se généralise dans le siècle. Obligatoire pour les enfants en 1902, elle est déjà bien implantée sous le Second Empire.",
-    "Royauté" => "La monarchie disparaît définitivement en 1870. Charles X a fui en 1830, Louis-Philippe en 1848. La royauté ne reviendra plus.",
+    "Dictature" => "Les régimes autoritaires disparaissent progressivement après 1870. La Troisième République ancre définitivement la démocratie en France.",
     "Lèpre" => "La lèpre a quasiment disparu du territoire français au XIXe siècle, reléguée aux marges de l'Empire colonial.",
     "Culture du viol" => "Le Code civil maintient la femme sous l'autorité du mari. Hugo dénonce l'injustice sociale, mais le consentement reste un non-sujet juridique.",
     "Pédophilie" => "La protection des mineurs progresse timidement. La loi de 1904 viendra plus tard, mais la pédocriminalité reste largement ignorée et impunie.",
@@ -487,7 +494,7 @@ era_comments = {
     "Chimiothérapie" => "La chimiothérapie se développe dans les années 1960-1970. Les premiers protocoles efficaces apparaissent, ouvrant un espoir contre le cancer."
   },
   "Louis XIV" => {
-    "Royauté" => "Louis XIV incarne l'absolutisme royal : « L'État, c'est moi. » Versailles devient le centre du pouvoir et de l'étiquette de cour.",
+    "Dictature" => "Louis XIV incarne l'absolutisme royal : « L'État, c'est moi. » Tous les pouvoirs sont concentrés entre les mains du roi à Versailles.",
     "Lèpre" => "La lèpre a largement reculé en France au XVIIe siècle, mais des maladreries subsistent. La maladie frappe encore les marges.",
     "Travail des enfants" => "Le travail des enfants est la norme dans les champs et ateliers. Dès 7 ans, ils participent à l'économie familiale sans protection.",
     "Esclavage" => "L'esclavage sévit dans les colonies. Le Code noir de 1685 réglemente l'esclavage, légitimant et organisant la condition servile.",
@@ -495,7 +502,7 @@ era_comments = {
     "Pédophilie" => "La protection des mineurs est inexistante. Le mariage précoce est toléré et la minorité sexuelle n'est pas un concept juridique."
   },
   "Moyen Âge" => {
-    "Royauté" => "La royauté se construit lentement. Les Capétiens font face à des seigneurs puissants et à un pouvoir fragmenté avant la centralisation progressive.",
+    "Dictature" => "Le pouvoir se concentre lentement entre les mains des souverains. Les Capétiens imposent progressivement leur autorité sur des seigneurs puissants et fragmentés.",
     "Lèpre" => "La lèpre est endémique au Moyen Âge. Des léproseries parsèment le pays pour isoler les malades, craints et marginalisés.",
     "Travail des enfants" => "Le travail des enfants est universel et nécessaire à la survie. Dès le plus jeune âge, les enfants travaillent aux champs ou aux ateliers.",
     "Esclavage" => "L'esclavage existe encore au début du Moyen Âge, mais décline avec la féodalité au profit du servage, qui le remplace graduellement.",
@@ -503,7 +510,7 @@ era_comments = {
     "Pédophilie" => "La pédocriminalité n'est pas identifiée. Les mariages précoces et la mortalité infantile élevée caractérisent cette société rude."
   },
   "Jésus Christ" => {
-    "Royauté" => "Hérode le Grand, roi vassal de Rome, règne sur la Judée. La souveraineté est indirecte, sous tutelle impériale romaine.",
+    "Dictature" => "Hérode le Grand, roi vassal de Rome, règne en maître sur la Judée. Le pouvoir est absolu, sous tutelle impériale romaine.",
     "Lèpre" => "La lèpre sévit dans le bassin méditerranéen. Malades isolés et marginaux, ils sont considérés comme impurs et exclus de la communauté.",
     "Travail des enfants" => "Le travail des enfants est la norme : aux champs, à l'atelier, à la maison. Dès le plus jeune âge, ils participent à l'économie familiale.",
     "Esclavage" => "L'esclavage est massif dans le monde romain : prisonniers de guerre, dettes, naissance. L'économie méditerranéenne en dépend largement.",
@@ -517,7 +524,7 @@ era_comments = {
     "Vaccination" => "La vaccination contre la variole est largement répandue. L'Institut Pasteur, fondé en 1888, développe le vaccin contre la rage.",
     "École gratuite et laïque" => "Les lois Ferry (1882) rendent l'école gratuite, laïque et obligatoire. L'alphabétisation progresse rapidement du vivant de Marie Curie.",
     "Liberté de la presse" => "La liberté de la presse (1881) est solidement établie. La presse écrite connaît son âge d'or avec l'affaire Dreyfus.",
-    "Royauté" => "La monarchie a définitivement disparu. La Troisième République est le régime en vigueur, sans prétendant sérieux au trône.",
+    "Dictature" => "La dictature monarchique a définitivement disparu. La Troisième République est le régime en vigueur, sans retour possible à l'autoritarisme.",
     "Culture du viol" => "Le Code civil maintient la femme sous l'autorité du mari. Marie Curie, pionnière, lutte pour sa place dans la science dominée par les hommes.",
     "Pédophilie" => "La protection des mineurs progresse timidement. La pédocriminalité reste largement ignorée et taboue à cette époque."
   },
@@ -551,7 +558,10 @@ era_comments = {
 # Paires Asset ↔ Era à exclure explicitement malgré le chevauchement de dates.
 excluded_comments = [
   ["Lèpre", "De Gaulle"],
-  ["Démocratie", "Napoléon"]
+  ["Lèpre", "Jacques Chirac"],
+  ["Démocratie", "Napoléon"],
+  ["Travail des enfants", "De Gaulle"],
+  ["Dictature", "Marie Curie"]
 ]
 
 # Conversion d'une année d'asset (string/int/nil) en entier ; nil = +infini.
@@ -599,6 +609,68 @@ excluded_comments.each do |asset_name, era_name|
   Comment.joins(:asset, :era).where(assets: { name: asset_name }, eras: { name: era_name }).destroy_all
 end
 puts "Comments created linking Assets and Eras"
+
+# === Bonus : fléaux et bienfaits par era ===
+
+%w[Guerre Peste Famine Abondance Paix].each do |name|
+  Bonus.find_or_create_by!(name: name)
+end
+puts "Bonuses created"
+
+# Existence de chaque bonus sur le territoire français métropolitain, par era.
+era_bonus_desc = {
+  "Jésus Christ" => {
+    "Paix" => "La Gaule romaine bénéficie de la Pax Romana. L'ordre impérial maintient une paix relative dans les provinces."
+  },
+  "Moyen Âge" => {
+    "Guerre" => "Invasions, guerres féodales et guerre de Cent Ans : le territoire est en conflit presque permanent tout au long du Moyen Âge.",
+    "Peste" => "La peste de Justinien (VIe s.) puis la peste noire (1347-1352) décimentent la population française.",
+    "Famine" => "Les famines sont endémiques, aggravées par les guerres et le climat. La grande famine de 1315-1317 frappe toute l'Europe."
+  },
+  "Louis XIV" => {
+    "Guerre" => "Guerres quasi continues : Hollande, Ligue d'Augsbourg, Succession d'Espagne. Le royaume est en guerre pendant la majeure partie du règne.",
+    "Peste" => "La grande peste de Marseille (1720) frappe la France à la fin du règne, mais sévit encore sporadiquement pendant la première moitié du XVIIe siècle.",
+    "Famine" => "Les famines frappent régulièrement le peuple : la grande famine de 1693-1694 fait près d'un million et demi de morts."
+  },
+  "Napoléon" => {
+    "Guerre" => "Les guerres napoléoniennes ravagent l'Europe. La France est en guerre quasi permanente de 1799 à 1815, jusqu'à Waterloo."
+  },
+  "Victor Hugo" => {
+    "Guerre" => "Invasions de 1814-1815, révolutions de 1830, 1848 et 1870, guerre franco-prussienne de 1870 : le siècle est marqué par les conflits."
+  },
+  "Marie Curie" => {
+    "Guerre" => "La Première Guerre mondiale (1914-1918) ravage le nord de la France et fait des millions de morts.",
+    "Famine" => "Les pénuries et le rationnement frappent la population pendant la Première Guerre mondiale.",
+    "Abondance" => "La Belle Époque (avant 1914) apporte croissance et prospérité. La révolution industrielle transforme la société française."
+  },
+  "De Gaulle" => {
+    "Guerre" => "Deux guerres mondiales marquent le début de sa vie. La Première (1914-18) et la Seconde (1939-45) ravagent le territoire.",
+    "Famine" => "Le rationnement et les pénuries de la Seconde Guerre mondiale et de l'après-guerre frappent durablement la population.",
+    "Abondance" => "Les Trente Glorieuses (1945-1975) apportent croissance, plein emploi et société de consommation à la France.",
+    "Paix" => "Après 1945, la France métropolitaine connaît la paix. De Gaulle préside pendant une période sans conflit armé sur le territoire."
+  },
+  "Jacques Chirac" => {
+    "Abondance" => "La société de consommation est à son apogée. Le niveau de vie atteint des sommets historiques pour la majorité des Français.",
+    "Paix" => "La France métropolitaine est en paix pendant toute la vie de Chirac, de l'après-guerre à 2019, sans conflit armé sur le territoire."
+  }
+}
+
+Era.all.each do |era|
+  desc = era_bonus_desc[era.name] || {}
+  Bonus.all.each do |bonus|
+    next unless desc[bonus.name]
+
+    eb = EraBonus.find_or_initialize_by(era: era, bonus: bonus)
+    eb.description = desc[bonus.name]
+    eb.save!
+  end
+
+  # Détruit les jonctions bonus-era qui ne sont plus pertinentes
+  era.era_bonuses.to_a.each do |eb|
+    eb.destroy unless (era_bonus_desc[era.name] || {}).key?(eb.bonus.name)
+  end
+end
+puts "EraBonus created linking Eras and Bonuses"
 
 # Asset
 # lave linge
