@@ -24,7 +24,7 @@ class Asset < ApplicationRecord
   # `type` is used as a regular enum column, not for Single Table Inheritance
   self.inheritance_column = nil
 
-  enum type: {
+  enum :type, {
     progress: "progress",
     phenomenom: "phenomenom",
     curse: "curse"

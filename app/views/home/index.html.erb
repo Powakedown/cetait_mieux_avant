@@ -45,7 +45,7 @@
           <div class="era-modal-content">
             <% hero_path = era_hero_path(slug) %>
             <%= tag.div class: class_names("era-modal-hero", "era-image-placeholder" => !hero_path),
-                  style: "background-image: url('#{image_path(hero_path)}');" do %>
+                  style: (hero_path ? "background-image: url('#{image_path(hero_path)}');" : nil) do %>
               <span class="era-hero-ia-badge">IA</span>
             <% end %>
             <div class="era-modal-body">
