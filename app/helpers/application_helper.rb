@@ -4,10 +4,10 @@ module ApplicationHelper
   def era_image_tag(slug, kind, alt:, classes:, size: nil)
     path = "era/#{kind}/#{slug}.png"
     if era_asset_exists?(path)
-      image_tag(path, alt: alt, class: classes, **(size ? { width: size, height: size } : {}))
+      image_tag(path, alt:, class: classes, **(size ? { width: size, height: size } : {}))
     else
       style = size ? "width:#{size}px;height:#{size}px" : "width:100%;height:100%"
-      tag.span(slug.first.upcase, class: "#{classes} era-image-placeholder", style: style)
+      tag.span(slug.first.upcase, class: "#{classes} era-image-placeholder", style:)
     end
   end
 
@@ -22,7 +22,7 @@ module ApplicationHelper
 
   def era_asset_exists?(path)
     manifest = Rails.application.assets_manifest
-    return manifest.assets.key?(path) if manifest
+    return true if manifest&.assets&.key?(path)
 
     Rails.application.assets&.find_asset(path).present?
   end
