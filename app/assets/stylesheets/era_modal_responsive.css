@@ -21,31 +21,18 @@
   }
 
   .era-modal-hero {
-    display: flex;
-    width: 100%;
-    height: auto;
-    min-height: 132px;
-    align-items: center;
-    justify-content: center;
-    background-image: none !important;
-    border-right: none;
-    border-bottom: 1px solid #334155;
-    border-radius: 14px 14px 0 0;
-    overflow: visible;
+    display: none;
   }
 
-  .era-modal-hero .era-modal-portrait {
+  .era-modal-portrait {
     display: inline-flex;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
+    margin: .5rem auto;
     border: 1px solid rgba(6, 182, 212, 0.5);
-  }
-
-  .era-modal-hero.era-image-placeholder .era-modal-portrait {
-    display: inline-flex;
-    font-size: 2rem;
+    font-size: 5rem;
   }
 
   .era-modal {
@@ -64,7 +51,7 @@
   .era-modal-overlay {
     align-items: flex-start;
     overflow-y: auto;
-    padding: 3.5rem 0.75rem 1rem;
+    padding: .5rem;
   }
 
   .era-modal-hero .era-hero-ia-badge {

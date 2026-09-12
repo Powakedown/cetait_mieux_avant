@@ -48,6 +48,7 @@
                   style: (hero_path ? "background-image: url('#{image_path(hero_path)}');" : nil) do %>
               <span class="era-hero-ia-badge">IA</span>
             <% end %>
+            <%= era_image_tag(slug, "buttons", alt: era.name, classes: "era-modal-portrait", size: 150) %>
             <div class="era-modal-body">
               <div class="era-modal-scroll">
                 <h2 class="era-modal-title"><%= era.question %></h2>
