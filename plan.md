@@ -175,6 +175,13 @@ Fait en sorte que le timeline soit plus compact sur mobile.
   - Le tootip des bonus ne doit pas passe en dessous des images hero
   - Délier Napoléon de Famine
 
+# 19 - Responsive des Era mobile
+
+  - en mobile, les modales doivent s'étendre librement avec la taille du contenu en hauteur.
+  - en mobile, remplacer l'image en background en haut par le portrait centré en haut et dans un rond. L'image de background ne doit pas apparaitre en mobile. Elle doit être 2 fois plus grosse que sur l'index
+  - les tooltips sur les assets ne doivent pas être coupées par les bords de l'écran.
+  - Split application.css into multiple files, depending on the component styles. Link each other to make it work.
+
 # Fin
 
 
