@@ -21,10 +21,9 @@ module ApplicationHelper
   private
 
   def era_asset_exists?(path)
-    if Rails.application.assets
-      Rails.application.assets.find_asset(path).present?
-    else
-      Rails.application.assets_manifest&.find(path).present?
-    end
+    manifest = Rails.application.assets_manifest
+    return manifest.assets.key?(path) if manifest
+
+    Rails.application.assets&.find_asset(path).present?
   end
 end
